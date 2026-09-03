@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://dvrk404vsmxjc"]
+
+[ext_resource type="FontFile" uid="uid://bn0wyk6g8rciv" path="res://Assets/Fonts/Macondo/Macondo-Regular.ttf" id="1_tohuk"]
+
+[resource]
+default_font = ExtResource("1_tohuk")
+default_font_size = 33
