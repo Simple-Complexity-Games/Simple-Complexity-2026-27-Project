@@ -1232,6 +1232,15 @@ Oldest"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1625805890]
 environment = SubResource("Environment_yhxw7")
 
+[node name="emmetts test button" type="Button" parent="." unique_id=1345214353]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 980.0
+offset_right = 1909.0
+offset_bottom = 1070.0
+theme_override_font_sizes/font_size = 33
+text = "Fight"
+
 [connection signal="button_down" from="Main_Menu_Container/Start_Button" to="." method="_on_start_button_button_down"]
 [connection signal="mouse_entered" from="Main_Menu_Container/Start_Button" to="." method="_on_start_button_mouse_entered"]
 [connection signal="button_down" from="Main_Menu_Container/Options_Button" to="." method="_on_options_button_button_down"]
@@ -1304,3 +1313,4 @@ environment = SubResource("Environment_yhxw7")
 [connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Glide_Bind_Button" to="." method="_on_glide_bind_button_mouse_entered"]
 [connection signal="button_down" from="Controls_Menu_Container/GridContainer/Glide_Bind_Button/Glide_Unbind_Button" to="." method="_on_glide_unbind_button_button_down"]
 [connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Glide_Bind_Button/Glide_Unbind_Button" to="." method="_on_glide_unbind_button_mouse_entered"]
+[connection signal="pressed" from="emmetts test button" to="." method="_on_emmetts_test_button_pressed"]

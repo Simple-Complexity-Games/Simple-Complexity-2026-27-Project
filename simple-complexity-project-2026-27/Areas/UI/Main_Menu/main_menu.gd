@@ -1199,3 +1199,7 @@ func _notification(what):
 		InputMap.action_erase_events("ui_up")
 		InputMap.action_erase_events("ui_down")
 #endregion
+
+#to test combat scene
+func _on_emmetts_test_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Areas/combat_test.tscn")
