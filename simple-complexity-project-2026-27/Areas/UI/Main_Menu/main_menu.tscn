@@ -1234,10 +1234,10 @@ environment = SubResource("Environment_yhxw7")
 
 [node name="emmetts test button" type="Button" parent="." unique_id=1345214353]
 layout_mode = 0
-offset_left = 1819.0
-offset_top = 980.0
-offset_right = 1909.0
-offset_bottom = 1070.0
+offset_left = 1756.0
+offset_top = 925.0
+offset_right = 1846.0
+offset_bottom = 1015.0
 theme_override_font_sizes/font_size = 33
 text = "Fight"
 

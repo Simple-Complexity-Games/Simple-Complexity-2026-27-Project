@@ -33,6 +33,7 @@ window/size/viewport_height=1080
 window/size/sharp_corners=true
 window/size/window_width_override=960
 window/size/window_height_override=540
+window/hdr/request_hdr_output=true
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
