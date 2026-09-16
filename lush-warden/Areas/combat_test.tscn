@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://crvjqhfk65o3b"]
 
 [ext_resource type="Script" uid="uid://540l5n0nkyu" path="res://Scripts/Combat.gd" id="1_h22pc"]
-[ext_resource type="Texture2D" uid="uid://kun0444r0ryw" path="res://icon.svg" id="2_caeb8"]
+[ext_resource type="Texture2D" uid="uid://kun0444r0ryw" path="res://Assets/Game_Icon/icon.svg" id="2_caeb8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_etway"]
 bg_color = Color(1, 0, 0, 1)

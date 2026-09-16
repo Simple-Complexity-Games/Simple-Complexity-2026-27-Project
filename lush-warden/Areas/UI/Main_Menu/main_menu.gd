@@ -69,9 +69,9 @@ extends Control
 
 #region ------File Path and File Name Definitions------
 # Button icon folder
-var button_icon_folder_path = "res://assets/Art/Button_Icons/Keyboard_And_Mouse/Dark/"
+var button_icon_folder_path = "res://Areas/UI/Main_Menu/Button_Icons/Keyboard_And_Mouse/Dark/"
 # Unrecognized keybind texture paths
-var blank_button_icon_folder_path = "res://assets/Art/Button_Icons/Keyboard_And_Mouse/Blanks/"
+var blank_button_icon_folder_path = "res://Areas/UI/Main_Menu/Button_Icons/Keyboard_And_Mouse/Blanks/"
 var blank_key_texture_name = "Blank_Black_Normal.png"
 var blank_mouse_texture_name = "Blank_Black_Mouse.png"
 #endregion
@@ -973,7 +973,7 @@ func Save_Window_Position(x = null, y = null):
 func Start_Game():
 	#GameManager.set("pos_x", 650)
 	#GameManager.set("pos_x", 22)
-	get_tree().change_scene_to_file("")
+	get_tree().change_scene_to_file("res://Areas/Top-Down/map.tscn")
 
 func Load_Main_Menu():
 	Start_Button.grab_focus()

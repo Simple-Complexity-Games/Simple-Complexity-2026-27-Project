@@ -12,8 +12,6 @@ extends Control
 
 func _ready() -> void:
 	set_health($ProgressBar , State.Health , State.Max_Health)			#Sets the player health at the start of combat to actually equal the players actual health 
-	Enemy_health = 
-	Enemy_max_health = 
 	set_health($Enemy_Container/ProgressBar , Enemy_health , Enemy_max_health)
 	Cphase = 1
 	

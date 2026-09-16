@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="LeafWarden"
+config/name="The Bard"
 run/main_scene="uid://be8ds4pmwr8rn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/bg_color=Color(0.122027, 0.140922, 0.175023, 1)
@@ -31,11 +31,9 @@ State="*uid://b27d3u7xrfxgv"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/sharp_corners=true
-window/size/window_width_override=960
-window/size/window_height_override=540
-window/hdr/request_hdr_output=true
 window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
+window/dpi/allow_hidpi=false
+window/delta_smoothing=true
 
 [dotnet]
 
