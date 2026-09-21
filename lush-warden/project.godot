@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="The Bard"
+config/name="LushWarden"
 run/main_scene="uid://be8ds4pmwr8rn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/bg_color=Color(0.122027, 0.140922, 0.175023, 1)
@@ -28,8 +28,8 @@ State="*uid://b27d3u7xrfxgv"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=7680
+window/size/viewport_height=4320
 window/size/sharp_corners=true
 window/stretch/mode="viewport"
 window/dpi/allow_hidpi=false
@@ -43,10 +43,6 @@ project/assembly_name="Adventures in Avythera"
 
 Signs="for the game manager global script to be able to easily locate sign nodes"
 Dialog_Triggers=""
-
-[gui]
-
-common/snap_controls_to_pixels=false
 
 [input]
 
@@ -196,6 +192,7 @@ common/physics_interpolation=true
 
 textures/canvas_textures/default_texture_filter=2
 textures/vram_compression/compress_with_gpu=false
+textures/default_filters/use_nearest_mipmap_filter=true
 viewport/hdr_2d=true
 anti_aliasing/quality/msaa_2d=2
 anti_aliasing/quality/msaa_3d=1
@@ -203,4 +200,6 @@ anti_aliasing/quality/use_debanding=true
 textures/default_filters/texture_mipmap_bias=1.0
 anti_aliasing/quality/screen_space_aa=1
 anti_aliasing/quality/use_taa=true
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true
 2d/canvas_textures/default_texture_filter=4

@@ -1,10 +1,56 @@
 [gd_scene format=3 uid="uid://cfl7dw4qcxeu4"]
 
-[ext_resource type="Texture2D" uid="uid://kun0444r0ryw" path="res://Assets/Game_Icon/icon.svg" id="1_iejky"]
+[ext_resource type="Texture2D" uid="uid://befoed6lhnffw" path="res://Areas/Top-Down/example_map.png" id="1_iejky"]
+[ext_resource type="Script" uid="uid://dudhg45mvt1b0" path="res://Areas/Top-Down/top_down_player.gd" id="2_mibml"]
+[ext_resource type="Texture2D" uid="uid://ds77awv58pa3e" path="res://Areas/Top-Down/player_sprite.svg" id="2_xgnib"]
+[ext_resource type="Script" uid="uid://k8w28a6du5q5" path="res://Areas/Top-Down/fog.gd" id="4_cqrm3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oovfn"]
+radius = 36.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oovfn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xgnib")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D" unique_id=2090069428]
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=705263808]
-position = Vector2(960.50006, 540)
-scale = Vector2(14.992188, 8.4375)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=245969212]
+position = Vector2(3842, 2144)
+zoom = Vector2(0.25, 0.25)
+
+[node name="Map" type="Sprite2D" parent="." unique_id=705263808]
+position = Vector2(3843, -663)
+scale = Vector2(7.1184354, 7.715973)
 texture = ExtResource("1_iejky")
+metadata/_edit_lock_ = true
+
+[node name="Top_Down_Player" type="CharacterBody2D" parent="." unique_id=929393593]
+unique_name_in_owner = true
+position = Vector2(4934, 3607)
+motion_mode = 1
+script = ExtResource("2_mibml")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Down_Player" unique_id=1529843867]
+position = Vector2(0, 53)
+shape = SubResource("CircleShape2D_oovfn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Top_Down_Player" unique_id=1722990688]
+texture_filter = 1
+position = Vector2(3.0517578e-05, 0)
+scale = Vector2(0.5625, 1.0156249)
+sprite_frames = SubResource("SpriteFrames_oovfn")
+animation = &"Idle"
+
+[node name="Fog" type="Sprite2D" parent="." unique_id=1500918896]
+z_index = 2
+position = Vector2(3841.6362, 2143.6365)
+scale = Vector2(4, 4)
+script = ExtResource("4_cqrm3")
