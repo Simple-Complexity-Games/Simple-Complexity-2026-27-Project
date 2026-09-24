@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nobr3w2n02hb"
-path="res://.godot/imported/LushWarden_Fog_Clearing_Mask.png-e9863e62dea0e4fcea7d75d5848c42d6.ctex"
+uid="uid://b04f7wugsv65j"
+path="res://.godot/imported/LushWarden_Multiply_Mode_Fog_Clearing_Mask.png-9409051b590d63f6ba4a54333fdd5057.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Areas/Top-Down/LushWarden_Fog_Clearing_Mask.png"
-dest_files=["res://.godot/imported/LushWarden_Fog_Clearing_Mask.png-e9863e62dea0e4fcea7d75d5848c42d6.ctex"]
+source_file="res://Areas/Top-Down/LushWarden_Multiply_Mode_Fog_Clearing_Mask.png"
+dest_files=["res://.godot/imported/LushWarden_Multiply_Mode_Fog_Clearing_Mask.png-9409051b590d63f6ba4a54333fdd5057.ctex"]
 
 [params]
 
@@ -31,7 +31,7 @@ process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
 process/channel_remap/alpha=3
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
