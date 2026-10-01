@@ -7,26 +7,28 @@ const RETRACING_ACCELERATION = 950
 const FOG_CLEARING_SPEED = 90
 const RETRACING_SPEED = 350
 const JUMP_VELOCITY = -400.0
+
 var direction : Vector2
 var acceleration = FOG_CLEARING_ACCELERATION
 var speed = FOG_CLEARING_SPEED
-
 var fog_texture
+
+var fog_save_file
 
 
 func _ready():
 	fog_texture = fog.fog_texture.get_image()
-	print(fog_texture)
+	
+	if FileAccess.file_exists("user://fog_state"):
+		fog_texture = FileAccess.open("user://fog_state", FileAccess.READ)
 
 func _physics_process(delta: float) -> void:
-	print(acceleration)
 	fog_texture = fog.fog_texture.get_image()
-	print(fog_texture.get_pixel(self.position.x / 4, self.position.y / 4))
 	if fog_texture.get_pixel(self.position.x / 4, self.position.y / 4).a < 0.06:
 		acceleration = RETRACING_ACCELERATION
 		speed = RETRACING_SPEED
 	else:
-		if self.velocity.length() <= ((FOG_CLEARING_SPEED + RETRACING_SPEED) / 2):
+		if self.velocity.length() <= ((FOG_CLEARING_SPEED + RETRACING_SPEED) / 2.0):
 			acceleration = FOG_CLEARING_ACCELERATION
 		speed = FOG_CLEARING_SPEED
 	
@@ -41,3 +43,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, acceleration * delta)
 	
 	move_and_slide()
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		fog_texture.save_png("user://fog_state.png")
