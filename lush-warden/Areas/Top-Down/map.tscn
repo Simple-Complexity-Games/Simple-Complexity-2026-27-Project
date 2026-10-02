@@ -20,10 +20,12 @@ animations = [{
 }]
 
 [node name="Node2D" type="Node2D" unique_id=2090069428]
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=245969212]
 position = Vector2(3842, 2144)
 zoom = Vector2(0.25, 0.25)
+metadata/_edit_lock_ = true
 
 [node name="Map" type="Sprite2D" parent="." unique_id=705263808]
 position = Vector2(3843, -663)

@@ -13,14 +13,9 @@ var acceleration = FOG_CLEARING_ACCELERATION
 var speed = FOG_CLEARING_SPEED
 var fog_texture
 
-var fog_save_file
-
 
 func _ready():
 	fog_texture = fog.fog_texture.get_image()
-	
-	if FileAccess.file_exists("user://fog_state"):
-		fog_texture = FileAccess.open("user://fog_state", FileAccess.READ)
 
 func _physics_process(delta: float) -> void:
 	fog_texture = fog.fog_texture.get_image()
@@ -43,7 +38,3 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, acceleration * delta)
 	
 	move_and_slide()
-
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		fog_texture.save_png("user://fog_state.png")
