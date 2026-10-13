@@ -1231,7 +1231,7 @@ Oldest"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1625805890]
 environment = SubResource("Environment_yhxw7")
 
-[node name="emmetts test button" type="Button" parent="." unique_id=1345214353]
+[node name="Combat Test Button (Remove once done with combat)" type="Button" parent="." unique_id=1345214353]
 layout_mode = 0
 offset_left = 1756.0
 offset_top = 925.0
@@ -1312,4 +1312,4 @@ text = "Fight"
 [connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Glide_Bind_Button" to="." method="_on_glide_bind_button_mouse_entered"]
 [connection signal="button_down" from="Controls_Menu_Container/GridContainer/Glide_Bind_Button/Glide_Unbind_Button" to="." method="_on_glide_unbind_button_button_down"]
 [connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Glide_Bind_Button/Glide_Unbind_Button" to="." method="_on_glide_unbind_button_mouse_entered"]
-[connection signal="pressed" from="emmetts test button" to="." method="_on_emmetts_test_button_pressed"]
+[connection signal="pressed" from="Combat Test Button (Remove once done with combat)" to="." method="_on_emmetts_test_button_pressed"]

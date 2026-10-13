@@ -975,6 +975,11 @@ func Start_Game():
 	#GameManager.set("pos_x", 22)
 	get_tree().change_scene_to_file("res://Areas/Top-Down/map.tscn")
 
+func Test_Combat():
+	#GameManager.set("pos_x", 650)
+	#GameManager.set("pos_x", 22)
+	get_tree().change_scene_to_file("res://Areas/combat.tscn")
+
 func Load_Main_Menu():
 	Start_Button.grab_focus()
 	Options_Menu_Container.hide()
@@ -1202,4 +1207,4 @@ func _notification(what):
 
 #to test combat scene
 func _on_emmetts_test_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Areas/combat_test.tscn")
+	Test_Combat()
