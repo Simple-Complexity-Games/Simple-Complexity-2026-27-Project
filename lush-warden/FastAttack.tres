@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AttackResource" format=3 uid="uid://dk0ecxrocndnp"]
+
+[ext_resource type="Script" uid="uid://dl0txwan32bt" path="res://Scripts/AttackResource.gd" id="1_u4dmx"]
+
+[resource]
+script = ExtResource("1_u4dmx")
+name = "Fast Attack"
+metadata/_custom_type_script = "uid://dl0txwan32bt"

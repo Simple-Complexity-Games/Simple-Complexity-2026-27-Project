@@ -1,10 +1,62 @@
 [gd_scene format=3 uid="uid://coikg87dob56u"]
 
-[ext_resource type="Texture2D" uid="uid://kun0444r0ryw" path="res://Assets/Game_Icon/icon.svg" id="1_u2yqq"]
+[ext_resource type="Texture2D" uid="uid://dw61n1xav58rw" path="res://Assets/Henson.jpg" id="1_u2yqq"]
 
 [node name="Combat" type="Node2D" unique_id=2140955922]
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=554803998]
-position = Vector2(958.74994, 520.75)
-scale = Vector2(13.003905, 6.8789067)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1094578948]
+zoom = Vector2(0.25, 0.25)
+limit_left = 0
+limit_top = 0
+limit_right = 7680
+limit_bottom = 4320
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=795760613]
+position = Vector2(1443, 1459)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1002604013]
+modulate = Color(1, 0.50980395, 0.50980395, 1)
 texture = ExtResource("1_u2yqq")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=999364336]
+position = Vector2(4060, 856)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1448521302]
+modulate = Color(1, 0.50980395, 0.50980395, 1)
+texture = ExtResource("1_u2yqq")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1585859044]
+position = Vector2(6488, 1396)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=827891667]
+modulate = Color(1, 0.50980395, 0.50980395, 1)
+texture = ExtResource("1_u2yqq")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1720919845]
+position = Vector2(3998, 3299)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4" unique_id=283863487]
+modulate = Color(1.347661e-06, 0.9020949, 0.79445404, 1)
+texture = ExtResource("1_u2yqq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1586613067]
+
+[node name="AttackMenu" type="Control" parent="CanvasLayer" unique_id=1922167975]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/AttackMenu" unique_id=138201784]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 108.00001
+anchor_bottom = 108.00001
+offset_top = -100.00049
+offset_right = 100.0
+offset_bottom = -0.00048828125
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
