@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bbrysr4unum5v"]
+
+[ext_resource type="Texture2D" uid="uid://f3nsbambyxis" path="res://Areas/Combat/paperplaceholder.jpg" id="1_7b4qq"]
+[ext_resource type="PackedScene" uid="uid://bu3mey7sx7h63" path="res://Areas/Combat/CommandButton.tscn" id="2_jy2tu"]
+
+[node name="AttackMenu" type="Control" unique_id=589336096]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Paperplaceholder" type="Sprite2D" parent="." unique_id=1953873689]
+position = Vector2(228, 914.96423)
+scale = Vector2(0.88259107, 0.5176837)
+texture = ExtResource("1_7b4qq")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1161869595]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 27.000002
+anchor_bottom = 27.000002
+offset_top = -143.00012
+offset_right = 242.0
+offset_bottom = -0.00012207031
+grow_vertical = 0
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 75
+theme_override_constants/margin_bottom = 75
+
+[node name="MainCommands" type="VBoxContainer" parent="MarginContainer" unique_id=1698202068]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FastAttackButton" parent="MarginContainer/MainCommands" unique_id=1635471731 instance=ExtResource("2_jy2tu")]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Fast attacks move before all medium and slow attacks, but after enemy fast attacks."
+
+[node name="MediumAttackButton" parent="MarginContainer/MainCommands" unique_id=1187149094 instance=ExtResource("2_jy2tu")]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Medium attacks move after all fast attacks and enemy medium attacks, but before all slow attacks."
+text = "Medium Attack"
+
+[node name="SlowAttackButton" parent="MarginContainer/MainCommands" unique_id=97167034 instance=ExtResource("2_jy2tu")]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Slow attacks always move after all other attacks."
+text = "Slow Attack"

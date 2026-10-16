@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bu3mey7sx7h63"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2yqq"]
+
+[node name="FastAttackButton" type="Button" unique_id=1635471731]
+custom_minimum_size = Vector2(300, 0)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/focus = SubResource("StyleBoxFlat_u2yqq")
+text = "Fast Attack"
