@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ci4j4sbbwqw8p"]
+
+[ext_resource type="Texture2D" uid="uid://74fwa0aqexch" path="res://Entities/icon2.svg" id="1_2jr0c"]
+[ext_resource type="Script" uid="uid://2om52eud6fnv" path="res://Entities/vignette_travel_node.gd" id="1_vyshl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k84gw"]
+size = Vector2(128, 128)
+
+[node name="Vignette_Travel_Node" type="Node2D" unique_id=497482775]
+script = ExtResource("1_vyshl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2048839776]
+position = Vector2(64, 64)
+texture = ExtResource("1_2jr0c")
+hframes = 2
+vframes = 2
+
+[node name="Area2D" type="Area2D" parent="." unique_id=910890481]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=55533810]
+position = Vector2(64, 64)
+shape = SubResource("RectangleShape2D_k84gw")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

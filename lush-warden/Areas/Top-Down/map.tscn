@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dudhg45mvt1b0" path="res://Areas/Top-Down/top_down_player.gd" id="2_mibml"]
 [ext_resource type="Texture2D" uid="uid://ds77awv58pa3e" path="res://Areas/Top-Down/player_sprite.svg" id="2_xgnib"]
 [ext_resource type="Script" uid="uid://k8w28a6du5q5" path="res://Areas/Top-Down/fog.gd" id="4_cqrm3"]
+[ext_resource type="PackedScene" uid="uid://ci4j4sbbwqw8p" path="res://Entities/vignette_travel_node.tscn" id="5_vtusi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oovfn"]
 radius = 36.0
@@ -18,6 +19,9 @@ animations = [{
 "name": &"Idle",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oovfn"]
+size = Vector2(120, 176)
 
 [node name="Node2D" type="Node2D" unique_id=2090069428]
 metadata/_edit_lock_ = true
@@ -35,6 +39,7 @@ metadata/_edit_lock_ = true
 
 [node name="Top_Down_Player" type="CharacterBody2D" parent="." unique_id=929393593]
 unique_name_in_owner = true
+z_index = 1
 position = Vector2(4934, 3607)
 motion_mode = 1
 script = ExtResource("2_mibml")
@@ -51,9 +56,18 @@ scale = Vector2(0.5625, 1.0156249)
 sprite_frames = SubResource("SpriteFrames_oovfn")
 animation = &"Idle"
 
+[node name="Interaction_Area" type="Area2D" parent="Top_Down_Player" unique_id=961782326]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Down_Player/Interaction_Area" unique_id=815324]
+position = Vector2(-2, 1)
+shape = SubResource("RectangleShape2D_oovfn")
+
 [node name="Fog" type="Sprite2D" parent="." unique_id=1500918896]
 unique_name_in_owner = true
 z_index = 2
 position = Vector2(3841.6362, 2143.6365)
 scale = Vector2(4, 4)
 script = ExtResource("4_cqrm3")
+
+[node name="Vignette_Travel_Node" parent="." unique_id=497482775 instance=ExtResource("5_vtusi")]
+position = Vector2(5072, 1544)
