@@ -81,10 +81,10 @@ offset_bottom = 122.336
 tooltip_text = "A Game By Simple Complexity"
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.509804, 0.894118, 1, 1)
+theme_override_colors/font_outline_color = Color(0.38592884, 0.7387168, 0.4331341, 1)
 theme_override_constants/outline_size = 18
 theme_override_font_sizes/normal_font_size = 200
-text = "SongBound"
+text = "Lushwarden"
 horizontal_alignment = 1
 
 [node name="Main_Menu_Container" type="VBoxContainer" parent="." unique_id=260904405]

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://coikg87dob56u"]
+
+[ext_resource type="Texture2D" uid="uid://dw61n1xav58rw" path="res://Assets/Henson.jpg" id="1_fgds1"]
+[ext_resource type="PackedScene" uid="uid://bbrysr4unum5v" path="res://Areas/Combat/AttackMenu.tscn" id="2_kcxw6"]
+[ext_resource type="Script" uid="uid://doot1u4v4seih" path="res://Areas/Combat/AttackMenu.gd" id="3_0dlmo"]
+
+[node name="Combat" type="Node2D" unique_id=2140955922]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=110476534]
+z_index = -10
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(1, 1, 1, 0.039215688)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1094578948]
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1720919845]
+position = Vector2(981, 898)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4" unique_id=283863487]
+modulate = Color(1.347661e-06, 0.9020949, 0.79445404, 1)
+position = Vector2(3, -3)
+scale = Vector2(0.38495576, 0.38495576)
+texture = ExtResource("1_fgds1")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=2096538657]
+position = Vector2(1537, 384)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D5" unique_id=43771719]
+modulate = Color(1, 0.39215687, 0.39215687, 1)
+position = Vector2(3, -3)
+scale = Vector2(0.38495576, 0.38495576)
+texture = ExtResource("1_fgds1")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="." unique_id=705676985]
+position = Vector2(981, 222)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D6" unique_id=153951673]
+modulate = Color(1, 0.39215687, 0.39215687, 1)
+position = Vector2(3, -3)
+scale = Vector2(0.38495576, 0.38495576)
+texture = ExtResource("1_fgds1")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="." unique_id=588092230]
+position = Vector2(452, 382)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D7" unique_id=195878789]
+modulate = Color(1, 0.39215687, 0.39215687, 1)
+position = Vector2(3, -3)
+scale = Vector2(0.38495576, 0.38495576)
+texture = ExtResource("1_fgds1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1586613067]
+
+[node name="AttackMenu" parent="CanvasLayer" unique_id=589336096 instance=ExtResource("2_kcxw6")]
+script = ExtResource("3_0dlmo")

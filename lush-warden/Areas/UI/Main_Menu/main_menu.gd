@@ -978,7 +978,7 @@ func Start_Game():
 func Test_Combat():
 	#GameManager.set("pos_x", 650)
 	#GameManager.set("pos_x", 22)
-	get_tree().change_scene_to_file("res://Areas/combat.tscn")
+	get_tree().change_scene_to_file("res://Areas/Combat/combat.tscn")
 
 func Load_Main_Menu():
 	Start_Button.grab_focus()
