@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var Sprite = self.get_node("Sprite2D")
+@export var vignette_file_name = ""
 
 var area_occupied = false
 
@@ -12,7 +13,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if area_occupied and Input.is_action_just_pressed("Jump"):
-		get_tree().change_scene_to_file("res://Areas/Vignettes/Movement_Test.tscn")
+		if not vignette_file_name:
+			print("ERROR: Vignette file name missing, cannot load scene")
+		else:
+			get_tree().change_scene_to_file("res://Areas/Vignettes/" + vignette_file_name + ".tscn")
 
 
 func _on_area_2d_area_entered(body: Node2D) -> void:

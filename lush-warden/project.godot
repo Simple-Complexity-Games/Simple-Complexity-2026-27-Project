@@ -179,9 +179,7 @@ Kill={
 2d_render/layer_8="Foreground Occluders"
 2d_physics/layer_1="Terrain"
 2d_physics/layer_2="Player"
-2d_physics/layer_3="Perchable Surfaces"
-2d_physics/layer_4="Entities"
-2d_physics/layer_5="Fluids"
+2d_physics/layer_3="Entities"
 
 [physics]
 

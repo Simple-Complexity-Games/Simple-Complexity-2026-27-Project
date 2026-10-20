@@ -71,3 +71,4 @@ script = ExtResource("4_cqrm3")
 
 [node name="Vignette_Travel_Node" parent="." unique_id=497482775 instance=ExtResource("5_vtusi")]
 position = Vector2(5072, 1544)
+vignette_file_name = "Movement_Test"
