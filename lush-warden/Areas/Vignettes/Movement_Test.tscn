@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dhj4ubxht6qnc" path="res://Entities/player.tscn" id="2_80wip"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ksfwc"]
+resource_name = "Physical Tileset"
 texture = ExtResource("1_80wip")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 8, -8, -8, 8)
@@ -32,10 +33,23 @@ texture = ExtResource("1_80wip")
 3:1/0/physics_layer_0/polygon_1/points = PackedVector2Array(-8, 8, 8, -8, 8, 8)
 3:1/0/physics_layer_0/polygon_1/one_way = true
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_80wip"]
+resource_name = "Visual-Only Tileset"
+texture = ExtResource("1_80wip")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_oovfn"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
 sources/3 = SubResource("TileSetAtlasSource_ksfwc")
+sources/4 = SubResource("TileSetAtlasSource_80wip")
 
 [node name="MovementTest" type="Node2D" unique_id=1206397193]
 
