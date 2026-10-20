@@ -22,7 +22,7 @@ limit_bottom = 1080
 position = Vector2(981, 898)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4" unique_id=283863487]
-modulate = Color(1.347661e-06, 0.9020949, 0.79445404, 1)
+modulate = Color(0, 1, 0.50980395, 1)
 position = Vector2(3, -3)
 scale = Vector2(0.38495576, 0.38495576)
 texture = ExtResource("1_fgds1")
