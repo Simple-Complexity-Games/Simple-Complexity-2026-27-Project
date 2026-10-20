@@ -22,9 +22,12 @@ func _ready() -> void:
 	MediumAttackButton.pressed.connect(_on_attack_pressed.bind(MediumAttack))
 	SlowAttackButton.pressed.connect(_on_attack_pressed.bind(SlowAttack))
 	
+	MainCommands.grab_focus()
+	
 func _on_attack_pressed(command: Resource):
 	
 	AttackSelected.emit(command)
+	print(command)
 	
 	
 	
