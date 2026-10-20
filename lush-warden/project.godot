@@ -41,7 +41,6 @@ project/assembly_name="Adventures in Avythera"
 
 [global_group]
 
-Signs="for the game manager global script to be able to easily locate sign nodes"
 Dialog_Triggers=""
 AttackMenu=""
 
