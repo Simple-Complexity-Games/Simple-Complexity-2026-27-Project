@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ccm4e5yqw4c57"]
+
+[ext_resource type="Script" uid="uid://pnma4yk1g0ao" path="res://Areas/Combat/TargetNode.gd" id="1_63ryy"]
+[ext_resource type="Texture2D" uid="uid://b4txy4bpjlwpt" path="res://Areas/Combat/Luswarden Enemy Targetting.png" id="2_oo3yi"]
+
+[node name="TargetNode" type="Node" unique_id=260314735]
+script = ExtResource("1_63ryy")
+
+[node name="TargetIcon" type="TextureRect" parent="." unique_id=1734013507]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 25)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_oo3yi")
+expand_mode = 1
