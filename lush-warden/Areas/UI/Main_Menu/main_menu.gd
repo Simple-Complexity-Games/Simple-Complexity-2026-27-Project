@@ -1087,7 +1087,9 @@ func Change_Override_Config(setting_path, value):
 func Save_Config(config_file):
 	config_file.save("user://config")
 
-func Apply_Config(config_file):
+# utility is a var that if false signals this is normal menu operation, but if true signals the function is 
+# being used to get the keybinds stored in the config file into the InputMap in a directly launched scene
+func Apply_Config(config_file, utility = false):
 	#region <> Controls settings
 	for section_key in config_file.get_section_keys("Controls"):
 		var bind_list = config_file.get_value("Controls", section_key)
@@ -1124,7 +1126,8 @@ func Apply_Config(config_file):
 				primary_keybind_event.set_keycode(int(bind_list[0].substr(1)))
 				primary_keybind_event.pressed = true
 				InputMap.action_add_event(section_key, primary_keybind_event)
-			Rebind_Action_To_Primary_Icon_Node_Dict.get(str(section_key)).texture = primary_rebind_slot_icon
+			if not utility:
+				Rebind_Action_To_Primary_Icon_Node_Dict.get(str(section_key)).texture = primary_rebind_slot_icon
 		else:
 			Rebind_Action_To_Primary_Icon_Node_Dict.get(str(section_key)).texture = null
 		
@@ -1158,36 +1161,39 @@ func Apply_Config(config_file):
 				secondary_keybind_event.set_keycode(int(bind_list[1].substr(1)))
 				secondary_keybind_event.pressed = true
 				InputMap.action_add_event(section_key, secondary_keybind_event)
-			Rebind_Action_To_Secondary_Icon_Node_Dict.get(str(section_key)).texture = secondary_rebind_slot_icon
+			if not utility:
+				Rebind_Action_To_Secondary_Icon_Node_Dict.get(str(section_key)).texture = secondary_rebind_slot_icon
 		else:
 			Rebind_Action_To_Secondary_Icon_Node_Dict.get(str(section_key)).texture = null
 	#endregion
 	
 	#region <> Audio settings
-	# Very important to divide each of these by around 100 to get a range close to 0-1
-	# because otherwise upon loading an existing config file the player's eardrums will be blasted out by 
-	# horribly deep-fried and amplified audio (ask me how I know)
-	AudioServer.set_bus_volume_linear(0, config_file.get_value("Audio", "Master_Volume") / 80.0)
-	Master_Volume_Slider.value = config_file.get_value("Audio", "Master_Volume")
-	AudioServer.set_bus_volume_linear(1, config_file.get_value("Audio", "Music_Volume") / 80.0)
-	Music_Volume_Slider.value = config_file.get_value("Audio", "Music_Volume")
-	AudioServer.set_bus_volume_linear(2, config_file.get_value("Audio", "SFX_Volume") / 80.0)
-	SFX_Volume_Slider.value = config_file.get_value("Audio", "SFX_Volume")
+	if not utility:
+		# Very important to divide each of these by around 100 to get a range close to 0-1
+		# because otherwise upon loading an existing config file the player's eardrums will be blasted out by 
+		# horribly deep-fried and amplified audio (ask me how I know)
+		AudioServer.set_bus_volume_linear(0, config_file.get_value("Audio", "Master_Volume") / 80.0)
+		Master_Volume_Slider.value = config_file.get_value("Audio", "Master_Volume")
+		AudioServer.set_bus_volume_linear(1, config_file.get_value("Audio", "Music_Volume") / 80.0)
+		Music_Volume_Slider.value = config_file.get_value("Audio", "Music_Volume")
+		AudioServer.set_bus_volume_linear(2, config_file.get_value("Audio", "SFX_Volume") / 80.0)
+		SFX_Volume_Slider.value = config_file.get_value("Audio", "SFX_Volume")
 	#endregion
 	
 	#region <> Video settings
-	World_Environment.environment.adjustment_brightness = config_file.get_value("Video", "Brightness")
-	Video_Brightness_Slider.value = World_Environment.environment.adjustment_brightness
-	World_Environment.environment.adjustment_contrast = config_file.get_value("Video", "Contrast")
-	Video_Contrast_Slider.value = World_Environment.environment.adjustment_contrast
-	World_Environment.environment.adjustment_saturation = config_file.get_value("Video", "Saturation")
-	Video_Saturation_Slider.value = World_Environment.environment.adjustment_saturation
-	# Screen shake and blur
-	Screen_Shake_Button.button_pressed = config_file.get_value("Video", "Screen_Shake")
-	Screen_Blur_Button.button_pressed = config_file.get_value("Video", "Screen_Blur")
-	# Window setting
-	Window_Mode_Button.selected = Button_To_WindowMode_Index_Dict.find_key(ProjectSettings.get_setting_with_override("display/window/size/mode"))
-	DisplayServer.window_set_size(Vector2(float(ProjectSettings.get_setting_with_override("display/window/size/window_width_override")), float(ProjectSettings.get_setting_with_override("display/window/size/window_height_override"))))
+	if not utility:
+		World_Environment.environment.adjustment_brightness = config_file.get_value("Video", "Brightness")
+		Video_Brightness_Slider.value = World_Environment.environment.adjustment_brightness
+		World_Environment.environment.adjustment_contrast = config_file.get_value("Video", "Contrast")
+		Video_Contrast_Slider.value = World_Environment.environment.adjustment_contrast
+		World_Environment.environment.adjustment_saturation = config_file.get_value("Video", "Saturation")
+		Video_Saturation_Slider.value = World_Environment.environment.adjustment_saturation
+		# Screen shake and blur
+		Screen_Shake_Button.button_pressed = config_file.get_value("Video", "Screen_Shake")
+		Screen_Blur_Button.button_pressed = config_file.get_value("Video", "Screen_Blur")
+		# Window setting
+		Window_Mode_Button.selected = Button_To_WindowMode_Index_Dict.find_key(ProjectSettings.get_setting_with_override("display/window/size/mode"))
+		DisplayServer.window_set_size(Vector2(float(ProjectSettings.get_setting_with_override("display/window/size/window_width_override")), float(ProjectSettings.get_setting_with_override("display/window/size/window_height_override"))))
 	#endregion
 
 # Save settings upon quitting application at window manager request

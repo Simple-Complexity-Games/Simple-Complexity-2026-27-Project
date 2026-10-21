@@ -1,17 +1,26 @@
 extends CharacterBody2D
 
+@onready var main_menu = preload("res://Areas/UI/Main_Menu/Main_Menu.tscn")
 
 const SPEED = 300.0
 const ACCELERATION = 50000000
 const DECELERATION = 50000000
 const JUMP_VELOCITY = -400.0
 
+func _ready():
+	# If scene is detected to be launched directly, bypassing the main menu, instance the main menu scene for a 
+	# second and use its Apply_Config function to add the keybinds to the input map so everything works properly
+	if InputMap.action_get_events("Jump").size() <= 0:
+		var main_menu_instance = main_menu.instantiate()
+		var config = ConfigFile.new()
+		config.load("user://config")
+		main_menu_instance.Apply_Config(config, true)
+		main_menu_instance.queue_free()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump"):
 		print("jump?")
