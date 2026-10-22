@@ -2,6 +2,6 @@ extends Resource
 class_name AttackResource
 
 @export var name: String
-#@export var TargetType = TargetType
+@export var TargetType = Targetables
 
-#enum TargetType = {Enemies, Players} 
+enum Targetables {Enemies, Player} 
