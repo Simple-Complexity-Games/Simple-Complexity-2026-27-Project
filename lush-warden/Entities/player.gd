@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
 @onready var main_menu = preload("res://Areas/UI/Main_Menu/Main_Menu.tscn")
+@export var parent_map_node = ""
 
-const SPEED = 300.0
-const ACCELERATION = 50000000
-const DECELERATION = 50000000
-const JUMP_VELOCITY = -400.0
+const SPEED = 600.0
+const ACCELERATION = 200
+const DECELERATION = 200
+const JUMP_VELOCITY = -3000.0
 
 func _ready():
 	# If scene is detected to be launched directly, bypassing the main menu, instance the main menu scene for a 
@@ -20,13 +21,10 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * 8 * delta
 	# Handle jump.
-	if Input.is_action_just_pressed("Jump"):
-		print("jump?")
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		print("JUUUUMP")
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -37,3 +35,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, DECELERATION)
 		
 	move_and_slide()
+
+func _process(delta: float) -> void:
+	pass
