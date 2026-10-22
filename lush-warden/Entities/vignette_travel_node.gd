@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var Sprite = self.get_node("Sprite2D")
+@onready var fog = get_parent().get_node("Fog")
 @export var vignette_file_name = ""
 
 var area_occupied = false
@@ -16,6 +17,7 @@ func _process(delta: float) -> void:
 		if not vignette_file_name:
 			print("ERROR: Vignette file name missing, cannot load scene")
 		else:
+			fog.fog_texture.get_image().save_png("user://fog_state.png")
 			get_tree().change_scene_to_file("res://Areas/Vignettes/" + vignette_file_name + ".tscn")
 
 

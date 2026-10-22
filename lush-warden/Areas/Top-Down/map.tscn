@@ -69,6 +69,9 @@ position = Vector2(3841.6362, 2143.6365)
 scale = Vector2(4, 4)
 script = ExtResource("4_cqrm3")
 
-[node name="Vignette_Travel_Node" parent="." unique_id=497482775 instance=ExtResource("5_vtusi")]
+[node name="Test_Vignette_Travel_Node" parent="." unique_id=497482775 instance=ExtResource("5_vtusi")]
 position = Vector2(5072, 1544)
 vignette_file_name = "Movement_Test"
+
+[node name="Player_Spawn_Location" type="Node2D" parent="." unique_id=755219089]
+position = Vector2(4880, 3008)

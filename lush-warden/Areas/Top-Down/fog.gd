@@ -10,7 +10,7 @@ var fog_save_file = Image.new()
 
 var blit_material = BlitMaterial.new()
 var fog_texture = DrawableTexture2D.new()
-var texture_size = Vector2i(1920, 1080)
+var texture_size = Vector2i(1940, 1100)
 var clearing_rect_size = Vector2i(180,180)
 var player_position
 var clear_delay = 0.05

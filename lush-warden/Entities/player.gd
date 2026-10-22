@@ -37,4 +37,5 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("Escape"):
+		State.Back_To_Map(parent_map_node)
