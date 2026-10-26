@@ -277,7 +277,7 @@ func _ready() -> void:
 	previous_window_size = DisplayServer.window_get_size()
 	
 	# Make sure focus owner is defined
-	var focus_owner = get_viewport().gui_get_focus_owner()
+	#var focus_owner = get_viewport().gui_get_focus_owner()
 	
 	get_node("Video_Menu_Container/Window_Mode_Button").get_popup().canvas_item_default_texture_filter = TEXTURE_FILTER_NEAREST
 
