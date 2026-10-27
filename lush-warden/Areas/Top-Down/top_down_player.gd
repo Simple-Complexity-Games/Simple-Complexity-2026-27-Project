@@ -24,8 +24,14 @@ func _physics_process(delta: float) -> void:
 		speed = RETRACING_SPEED
 	else:
 		if self.velocity.length() <= ((FOG_CLEARING_SPEED + RETRACING_SPEED) / 2.0):
-			acceleration = FOG_CLEARING_ACCELERATION
-		speed = FOG_CLEARING_SPEED
+			if fog.Caution == false:
+				acceleration = FOG_CLEARING_ACCELERATION
+			else:
+				acceleration = FOG_CLEARING_ACCELERATION * 1.5
+			if fog.Caution == false:
+				acceleration = FOG_CLEARING_SPEED
+			else:
+				acceleration = FOG_CLEARING_SPEED * 1.5
 	
 	direction = Vector2(
 		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
