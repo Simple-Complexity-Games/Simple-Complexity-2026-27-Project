@@ -20,8 +20,21 @@ func _ready() -> void:
 	_set_late_signals()
 	
 func _input(event: InputEvent) -> void:
-	pass
 	
+	if not Target: 
+		return
+	
+	var AllEnemies = get_tree().get_nodes_in_group("Enemies")
+	var PlayerTarget = get_tree().get_node_in_group("Player")
+	
+	if Target in AllEnemies:
+		_select_between_targets(event, AllEnemies)
+	elif Target in PlayerTarget:
+		_select_between_targets(event, PlayerTarget)
+	
+func _select_between_targets(event: InputEvent, targets: Array):
+	print(event, targets)
+
 func _set_group() -> void:
 	
 	if Target_Character_Type == Character_Type.Player:
