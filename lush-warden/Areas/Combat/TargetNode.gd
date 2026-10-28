@@ -33,9 +33,30 @@ func _input(event: InputEvent) -> void:
 		_select_between_targets(event, Player_Target)
 	
 func _select_between_targets(event: InputEvent, targets: Array):
-	print(event, targets)
 	
-	var Current_Target_Index = 
+	var Current_Target_Index = targets.find(Target, 0)
+	
+	var Select_Left = event.is_action_pressed("Left")
+	var Select_Right = event.is_action_pressed("Right")
+	
+	if not Select_Left or Select_Right:
+		return
+	
+	if Select_Left:
+		Current_Target_Index -= 1
+		if Current_Target_Index < 0:
+			Current_Target_Index = targets.size() - 1
+	elif Select_Right:
+		Current_Target_Index -= 1
+		if Current_Target_Index > targets.size():
+			Current_Target_Index = 0
+	
+	_deselect_all_targets()
+	Target = targets[Current_Target_Index]
+	Target.set_target()
+	
+func _deselect_all_targets() -> void:
+	pass
 
 func _set_group() -> void:
 	
