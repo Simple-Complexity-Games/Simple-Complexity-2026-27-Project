@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cfl7dw4qcxeu4"]
 
 [ext_resource type="Texture2D" uid="uid://befoed6lhnffw" path="res://Areas/Top-Down/example_map.png" id="1_iejky"]
-[ext_resource type="Script" uid="uid://dudhg45mvt1b0" path="res://Areas/Top-Down/top_down_player.gd" id="2_mibml"]
+[ext_resource type="Script" uid="uid://dudhg45mvt1b0" path="res://Areas/Top-Down/Melkor.gd" id="2_mibml"]
 [ext_resource type="Texture2D" uid="uid://ds77awv58pa3e" path="res://Areas/Top-Down/player_sprite.svg" id="2_xgnib"]
 [ext_resource type="Script" uid="uid://k8w28a6du5q5" path="res://Areas/Top-Down/fog.gd" id="4_cqrm3"]
 [ext_resource type="PackedScene" uid="uid://ci4j4sbbwqw8p" path="res://Entities/vignette_travel_node.tscn" id="5_vtusi"]

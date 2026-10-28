@@ -24,16 +24,18 @@ func _input(event: InputEvent) -> void:
 	if not Target: 
 		return
 	
-	var AllEnemies = get_tree().get_nodes_in_group("Enemies")
-	var PlayerTarget = get_tree().get_node_in_group("Player")
+	var All_Enemies = get_tree().get_nodes_in_group("Enemies")
+	var Player_Target = get_tree().get_node_in_group("Player")
 	
-	if Target in AllEnemies:
-		_select_between_targets(event, AllEnemies)
-	elif Target in PlayerTarget:
-		_select_between_targets(event, PlayerTarget)
+	if Target in All_Enemies:
+		_select_between_targets(event, All_Enemies)
+	elif Target in Player_Target:
+		_select_between_targets(event, Player_Target)
 	
 func _select_between_targets(event: InputEvent, targets: Array):
 	print(event, targets)
+	
+	var Current_Target_Index = 
 
 func _set_group() -> void:
 	
