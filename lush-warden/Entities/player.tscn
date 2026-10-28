@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://fxqr2uco0c43" path="res://Entities/player.gd" id="1_gb1tc"]
 [ext_resource type="Texture2D" uid="uid://dw61n1xav58rw" path="res://Assets/Henson.jpg" id="1_tcnsb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oovfn"]
-size = Vector2(256, 384)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gb1tc"]
+radius = 104.0
+height = 336.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oovfn"]
 animations = [{
@@ -21,11 +22,11 @@ animations = [{
 script = ExtResource("1_gb1tc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=936404161]
-position = Vector2(128, 192)
-shape = SubResource("RectangleShape2D_oovfn")
+position = Vector2(112, 176)
+shape = SubResource("CapsuleShape2D_gb1tc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=514510914]
 modulate = Color(0, 1, 0.50980395, 1)
-position = Vector2(128.62502, 192.62497)
-scale = Vector2(0.3757374, 0.56452805)
+position = Vector2(112.62501, 172.62498)
+scale = Vector2(0.32853976, 0.50553095)
 sprite_frames = SubResource("SpriteFrames_oovfn")
