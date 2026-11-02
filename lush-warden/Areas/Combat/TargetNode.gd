@@ -13,6 +13,8 @@ var Target: TurnBasedAgent
 
 enum Character_Type {Enemy, Player}
 
+signal Target_Confirmed(target: TurnBasedAgent, command: Resource)
+
 func _ready() -> void:
 	
 	_set_group()
@@ -31,7 +33,15 @@ func _input(event: InputEvent) -> void:
 		_select_between_targets(event, All_Enemies)
 	elif Target in Player_Target:
 		_select_between_targets(event, Player_Target)
+		
+	if event.is_action_pressed("Select"):
+		_confirm_target()
+
+func _confirm_target() -> void:
 	
+	Target_Confirmed.emit(Target, Selected_Attack)
+	
+
 func _select_between_targets(event: InputEvent, targets: Array):
 	
 	var Current_Target_Index = targets.find(Target, 0)
@@ -56,7 +66,11 @@ func _select_between_targets(event: InputEvent, targets: Array):
 	Target.set_target()
 	
 func _deselect_all_targets() -> void:
-	pass
+	
+	var All_Targets = get_tree().get_all_nodes_in("Enemies") + get_tree().get_all_nodes_in("Player")
+	
+	for target in All_Targets:
+		target.Target_Icon.hide()
 
 func _set_group() -> void:
 	
