@@ -19,7 +19,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	fog_texture = fog.fog_texture.get_image()
-	if fog_texture.get_pixel(self.position.x / 4, self.position.y / 4).a < 0.06:
+	if fog_texture.get_pixel(self.position.x / 4, self.position.y / 4).a < 0.03:
 		acceleration = RETRACING_ACCELERATION
 		speed = RETRACING_SPEED
 	else:
@@ -28,10 +28,10 @@ func _physics_process(delta: float) -> void:
 				acceleration = FOG_CLEARING_ACCELERATION
 			else:
 				acceleration = FOG_CLEARING_ACCELERATION * 1.5
-			if fog.Caution == false:
-				acceleration = FOG_CLEARING_SPEED
-			else:
-				acceleration = FOG_CLEARING_SPEED * 1.5
+		if fog.Caution == false:
+			speed = FOG_CLEARING_SPEED
+		else:
+			speed = FOG_CLEARING_SPEED * 1.5
 	
 	direction = Vector2(
 		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
