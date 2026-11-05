@@ -53,6 +53,7 @@ func _ready() -> void:
 	clear_timer.one_shot = true
 	clear_timer.timeout.connect(_on_clear_timer_timeout)
 	fog_clear_cooldown = false
+	clear_timer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,7 +63,7 @@ func _process(_delta: float) -> void:
 	sharp_player_position = Vector2i((Player.position.x / 4) - (sharp_clearing_rect_size.x / 2), 
 	(Player.position.y / 4) - (sharp_clearing_rect_size.y / 2))
 	
-	if (((fog_clear_cooldown == false) or (Caution == true)) and ((abs(Player.velocity.length()) >= Player.FOG_CLEARING_SPEED / 2) or initial_clears < initial_clear_amount)):
+	if (((fog_clear_cooldown == false)) and ((abs(Player.velocity.length()) >= Player.FOG_CLEARING_SPEED / 2) or initial_clears < initial_clear_amount)):
 		initial_clears += 1
 		clear_timer.start()
 		fog_clear_cooldown = true
@@ -85,6 +86,7 @@ func _process(_delta: float) -> void:
 func _on_clear_timer_timeout():
 	fog_clear_cooldown = false
 	
+	fog_texture.blit_rect(Rect2i(player_position, clearing_rect_size), clear_texture, Color(1, 1, 1, 1), 0, blit_material)
 	if Caution == false:
 		fog_texture.blit_rect(Rect2i(player_position, clearing_rect_size), clear_texture, Color(1, 1, 1, 1), 0, blit_material)
 	else:
