@@ -98,6 +98,8 @@ func _deselect_all_targets():
 
 func _set_group():
 	
+	add_to_group("TurnBasedAgents")
+	
 	if Target_Character_Type == Character_Type.Player:
 		add_to_group("Player")
 	elif Target_Character_Type == Character_Type.Enemy:
