@@ -14,6 +14,16 @@ var Target: TurnBasedAgent
 enum Character_Type {Enemy, Player}
 
 signal Target_Confirmed(target: TurnBasedAgent, command: Resource)
+signal Attack_Cancelled
+signal Selection_Finished
+
+func _get_global_position():
+	
+	return get_parent().global_position
+	
+func _selection_finished():
+	
+	Selection_Finished.emit()
 
 func _ready() -> void:
 	
@@ -36,11 +46,25 @@ func _input(event: InputEvent) -> void:
 		
 	if event.is_action_pressed("Select"):
 		_confirm_target()
+	if event.is_action_pressed("Cancel"):
+		_cancel_targeting()
 
-func _confirm_target() -> void:
+func _confirm_target():
 	
 	Target_Confirmed.emit(Target, Selected_Attack)
+	_deselect_all_targets()
+	_set_active(false)
+	Target = null
+
+func _set_active(boolean: bool) -> void:
 	
+	print(boolean)
+
+func _cancel_targeting():
+	
+	Target = null
+	_deselect_all_targets()
+	Attack_Cancelled.emit()
 
 func _select_between_targets(event: InputEvent, targets: Array):
 	
@@ -64,34 +88,34 @@ func _select_between_targets(event: InputEvent, targets: Array):
 	_deselect_all_targets()
 	Target = targets[Current_Target_Index]
 	Target.set_target()
-	
-func _deselect_all_targets() -> void:
+
+func _deselect_all_targets():
 	
 	var All_Targets = get_tree().get_all_nodes_in("Enemies") + get_tree().get_all_nodes_in("Player")
 	
 	for target in All_Targets:
 		target.Target_Icon.hide()
 
-func _set_group() -> void:
+func _set_group():
 	
 	if Target_Character_Type == Character_Type.Player:
 		add_to_group("Player")
 	elif Target_Character_Type == Character_Type.Enemy:
 		add_to_group("Enemies")
 
-func _set_target_icon() -> void:
+func _set_target_icon():
 	
 	Target_Icon.hide()
 	Target_Icon.global_position = get_parent().global_position - (Target_Icon.get_global_rect().size / 2) - Target_Icon_Offset
 	Target_Icon.modulate = Color(1, 0, 0)
-	
-func _set_late_signals() -> void:
+
+func _set_late_signals():
 	
 	await get_tree().current_scene.ready
 	
 	var Attack_Menu = get_tree().get_first_node_in_group("AttackMenu")
 	Attack_Menu.Attack_Selected.connect(_on_attack_pressed)
-	
+
 func _on_attack_pressed(command: Resource) -> void:
 	
 	if not Is_Active:
@@ -105,7 +129,7 @@ func _on_attack_pressed(command: Resource) -> void:
 		Target = get_tree().get_node_in_group("Player")
 		
 	Target.set_target()
-	
+
 func set_target():
 	
 	Target_Icon.show()
