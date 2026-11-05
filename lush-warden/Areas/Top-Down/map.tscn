@@ -40,7 +40,7 @@ metadata/_edit_lock_ = true
 [node name="Top_Down_Player" type="CharacterBody2D" parent="." unique_id=929393593]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(4934, 3607)
+position = Vector2(682, 567)
 motion_mode = 1
 script = ExtResource("2_mibml")
 metadata/_edit_group_ = true
@@ -70,8 +70,25 @@ scale = Vector2(4, 4)
 script = ExtResource("4_cqrm3")
 
 [node name="Test_Vignette_Travel_Node" parent="." unique_id=497482775 instance=ExtResource("5_vtusi")]
-position = Vector2(5072, 1544)
+position = Vector2(175, 125)
 vignette_file_name = "Movement_Test"
 
-[node name="Player_Spawn_Location" type="Node2D" parent="." unique_id=755219089]
-position = Vector2(4880, 3008)
+[node name="Starting_Area_Vignette_Travel_Node" parent="." unique_id=1705709308 instance=ExtResource("5_vtusi")]
+position = Vector2(521, 440)
+vignette_file_name = "Starting_Area"
+
+[node name="River_Glade_Vignette_Travel_Node" parent="." unique_id=1450439072 instance=ExtResource("5_vtusi")]
+position = Vector2(2807, 3272)
+vignette_file_name = "River_Glade"
+
+[node name="Attack_Alcove_Vignette_Travel_Node" parent="." unique_id=1347985362 instance=ExtResource("5_vtusi")]
+position = Vector2(1419, 4041)
+vignette_file_name = "Attack_Alcove"
+
+[node name="Second_Ruins_Vignette_Travel_Node" parent="." unique_id=559020040 instance=ExtResource("5_vtusi")]
+position = Vector2(6241, 2264)
+vignette_file_name = "Second_Ruins"
+
+[node name="Sanctuary_Vignette_Travel_Node" parent="." unique_id=1627056499 instance=ExtResource("5_vtusi")]
+position = Vector2(3034, 1203)
+vignette_file_name = "Sanctuary"

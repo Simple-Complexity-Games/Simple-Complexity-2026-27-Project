@@ -63,7 +63,7 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.28580844, 0.41957915, 0.3683739, 1)
 sources/0 = SubResource("TileSetAtlasSource_80wip")
 
-[node name="MovementTest" type="Node2D" unique_id=1206397193]
+[node name="Movement_Test" type="Node2D" unique_id=1206397193]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=471143040]
 scale = Vector2(4, 4)
@@ -77,3 +77,11 @@ parent_map_node = "Test_Vignette_Travel_Node"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1629851541]
 position = Vector2(3840, 2160)
 zoom = Vector2(0.25, 0.25)
+
+[node name="Label" type="Label" parent="." unique_id=1852094318]
+offset_left = 3630.0
+offset_top = 206.0
+offset_right = 5664.0
+offset_bottom = 792.0
+theme_override_font_sizes/font_size = 269
+text = "Movement Test"

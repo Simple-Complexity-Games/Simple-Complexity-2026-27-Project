@@ -12,7 +12,7 @@ var fog_save_file = Image.new()
 
 var blit_material = BlitMaterial.new()
 var fog_texture = DrawableTexture2D.new()
-var texture_size = Vector2i(1920, 1080)
+var texture_size = Vector2i(1920, 1100)
 var clearing_rect_size = Vector2i(180,180)
 var sharp_clearing_rect_size = Vector2i(60,60)
 var player_position
@@ -31,9 +31,7 @@ func _ready() -> void:
 		#if the starting area is already cleared from a previous initial clear, don't clear it again (this would result in a sharp edge on the initial area)
 		initial_clear_amount = 0
 		
-		blit_material.blend_mode = BlitMaterial.BLEND_MODE_DISABLED
-		var stored_fog_texture = ImageTexture.create_from_image(Image.load_from_file("user://fog_state.png"))
-		fog_texture.blit_rect(Rect2i(0, 0, texture_size.x, texture_size.y), stored_fog_texture, Color(1, 1, 1, 1), 0, blit_material)
+		Load_Saved_Fog()
 	
 	blit_material.blend_mode = BlitMaterial.BLEND_MODE_MUL
 	
@@ -92,6 +90,12 @@ func _on_clear_timer_timeout():
 	else:
 		fog_texture.blit_rect(Rect2i(sharp_player_position, sharp_clearing_rect_size), sharp_clear_texture, Color(1, 1, 1, 1), 0, blit_material)
 	clear_timer.wait_time = clear_delay
+
+func Load_Saved_Fog():
+	print("I'm loadinnnggg!!!!")
+	blit_material.blend_mode = BlitMaterial.BLEND_MODE_DISABLED
+	var stored_fog_texture = ImageTexture.create_from_image(Image.load_from_file("user://fog_state.png"))
+	fog_texture.blit_rect(Rect2i(0, 0, texture_size.x, texture_size.y), stored_fog_texture, Color(1, 1, 1, 1), 0, blit_material)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
