@@ -92,7 +92,6 @@ func _on_clear_timer_timeout():
 	clear_timer.wait_time = clear_delay
 
 func Load_Saved_Fog():
-	print("I'm loadinnnggg!!!!")
 	blit_material.blend_mode = BlitMaterial.BLEND_MODE_DISABLED
 	var stored_fog_texture = ImageTexture.create_from_image(Image.load_from_file("user://fog_state.png"))
 	fog_texture.blit_rect(Rect2i(0, 0, texture_size.x, texture_size.y), stored_fog_texture, Color(1, 1, 1, 1), 0, blit_material)

@@ -973,7 +973,12 @@ func Save_Window_Position(x = null, y = null):
 func Start_Game():
 	#GameManager.set("pos_x", 650)
 	#GameManager.set("pos_x", 22)
-	get_tree().change_scene_to_file("res://Areas/Top-Down/map.tscn")
+	if FileAccess.file_exists("user://player_save_1"):
+		var player_save_file = ConfigFile.new()
+		var player_save_data = player_save_file.load("user://player_save_1")
+		get_tree().change_scene_to_file("res://Areas/Vignettes/" + player_save_file.get_value("Location", "Last_Vignette") + ".tscn")
+	else:
+		get_tree().change_scene_to_file("res://Areas/Vignettes/Starting_Area.tscn")
 
 func Test_Combat():
 	#GameManager.set("pos_x", 650)

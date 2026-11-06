@@ -17,8 +17,15 @@ func _process(delta: float) -> void:
 		if not vignette_file_name:
 			print("ERROR: Vignette file name missing, cannot load scene")
 		else:
+			var vignette_scene = load("res://Areas/Vignettes/" + vignette_file_name + ".tscn").instantiate()
+			
 			fog.fog_texture.get_image().save_png("user://fog_state.png")
-			get_tree().change_scene_to_file("res://Areas/Vignettes/" + vignette_file_name + ".tscn")
+			
+			var player_save_file = ConfigFile.new()
+			player_save_file.set_value("Location", "Last_Vignette", vignette_scene.get_node("Player").parent_map_node)
+			player_save_file.save("user://player_save_1")
+			
+			State.Change_To_Scene(vignette_scene)
 
 
 func _on_area_2d_area_entered(body: Node2D) -> void:
