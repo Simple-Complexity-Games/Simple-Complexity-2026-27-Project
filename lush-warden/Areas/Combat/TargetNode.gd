@@ -3,11 +3,14 @@ class_name TurnBasedAgent
 
 @export var Target_Character_Type: Character_Type
 @export var Target_Icon_Offset: Vector2 = Vector2(50, 0)
+@export var On_Turn_Icon_Offset: Vector2 = Vector2(0, -50)
 
 @onready var Target_Icon: TextureRect = %TargetIcon
+@onready var On_Turn_Icon: TextureRect = %OnTurnIcon
 @onready var Attack_Resource = preload("res://Areas/Combat/AttackResource.gd")
 
 @export var Is_Active = false
+
 var Selected_Attack: Resource
 var Target: TurnBasedAgent
 
@@ -29,6 +32,7 @@ func _ready() -> void:
 	
 	_set_group()
 	_set_target_icon()
+	_set_on_turn_icon()
 	_set_late_signals()
 	
 func _input(event: InputEvent) -> void:
@@ -58,7 +62,17 @@ func _confirm_target():
 
 func _set_active(boolean: bool) -> void:
 	
-	print(boolean)
+	Is_Active = boolean
+	
+	if Is_Active:
+		pass
+	else:
+		pass
+
+func _set_on_turn_icon():
+	
+	On_Turn_Icon.hide()
+	On_Turn_Icon.global_position = get_parent().global_position -(On_Turn_Icon.get_global_rect().size / 2) + On_Turn_Icon_Offset
 
 func _cancel_targeting():
 	
@@ -88,6 +102,7 @@ func _select_between_targets(event: InputEvent, targets: Array):
 	_deselect_all_targets()
 	Target = targets[Current_Target_Index]
 	Target.set_target()
+	print(Target)
 
 func _deselect_all_targets():
 	
