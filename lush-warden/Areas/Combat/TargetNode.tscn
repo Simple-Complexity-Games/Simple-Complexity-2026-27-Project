@@ -8,8 +8,18 @@ script = ExtResource("1_63ryy")
 
 [node name="TargetIcon" type="TextureRect" parent="." unique_id=1734013507]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(25, 25)
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_oo3yi")
 expand_mode = 1
+
+[node name="OnTurnIcon" type="TextureRect" parent="." unique_id=1621435047]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 25)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_oo3yi")
+expand_mode = 1
+flip_v = true

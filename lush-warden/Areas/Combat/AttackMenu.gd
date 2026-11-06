@@ -28,6 +28,7 @@ func _on_attack_pressed(command: Resource):
 	
 	Attack_Selected.emit(command)
 	print(command)
+	print(randi_range(-5, 5))
 	
 	
 	
