@@ -12,8 +12,8 @@ var fog_save_file = Image.new()
 
 var blit_material = BlitMaterial.new()
 var fog_texture = DrawableTexture2D.new()
-var texture_size = Vector2i(1920, 1100)
-var clearing_rect_size = Vector2i(180,180)
+var texture_size = Vector2i(1920, 1080)
+var clearing_rect_size = Vector2i(200,200)
 var sharp_clearing_rect_size = Vector2i(60,60)
 var player_position
 var sharp_player_position
@@ -25,7 +25,7 @@ var initial_clear_amount = 8
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	fog_texture.setup(texture_size.x, texture_size.y, DrawableTexture2D.DRAWABLE_FORMAT_RGBA8, Color(0.9, 0.9, 0.9, 0.97), false)
+	await Create_Fog_Texture()
 	# If a save for the fog state exists, override the defult fog generation
 	if FileAccess.file_exists("user://fog_state.png"):
 		#if the starting area is already cleared from a previous initial clear, don't clear it again (this would result in a sharp edge on the initial area)
@@ -79,22 +79,41 @@ func _process(_delta: float) -> void:
 		else:
 			Caution = true
 			
-		print(Caution)
+		#print(Caution)
 
 func _on_clear_timer_timeout():
 	fog_clear_cooldown = false
 	
-	fog_texture.blit_rect(Rect2i(player_position, clearing_rect_size), clear_texture, Color(1, 1, 1, 1), 0, blit_material)
+	#fog_texture.blit_rect(Rect2i(player_position, clearing_rect_size), clear_texture, Color(1, 1, 1, 1), 0, blit_material)
 	if Caution == false:
 		fog_texture.blit_rect(Rect2i(player_position, clearing_rect_size), clear_texture, Color(1, 1, 1, 1), 0, blit_material)
 	else:
 		fog_texture.blit_rect(Rect2i(sharp_player_position, sharp_clearing_rect_size), sharp_clear_texture, Color(1, 1, 1, 1), 0, blit_material)
 	clear_timer.wait_time = clear_delay
 
+func Create_Fog_Texture():
+	fog_texture.setup(texture_size.x, texture_size.y, DrawableTexture2D.DRAWABLE_FORMAT_RGBA8, Color(0.9, 0.9, 0.9, 0.97), false)
+	var noise_texture = NoiseTexture2D.new()
+	var gradient = Gradient.new()
+	gradient.add_point(0, Color(0.9, 0.9, 0.9, 0.935))
+	gradient.add_point(1, Color(0.7, 0.7, 0.7, 1))
+	noise_texture.color_ramp = gradient
+	noise_texture.height = 220
+	noise_texture.width = 220
+	var noise = FastNoiseLite.new()
+	noise.seed = randi()
+	noise_texture.noise = noise
+	await noise_texture.changed
+	blit_material.blend_mode = BlitMaterial.BLEND_MODE_DISABLED
+	fog_texture.blit_rect(Rect2i(0, 0, texture_size.x, texture_size.y), noise_texture, Color(0.95, 0.95, 0.95, 1), 0, blit_material)
+	fog_texture.blit_rect(Rect2i(0, 0, texture_size.x, texture_size.y), noise_texture, Color(0.95, 0.95, 0.95, 1), 0, blit_material)
+	blit_material.blend_mode = BlitMaterial.BLEND_MODE_MUL
+
 func Load_Saved_Fog():
 	blit_material.blend_mode = BlitMaterial.BLEND_MODE_DISABLED
 	var stored_fog_texture = ImageTexture.create_from_image(Image.load_from_file("user://fog_state.png"))
 	fog_texture.blit_rect(Rect2i(0, 0, texture_size.x, texture_size.y), stored_fog_texture, Color(1, 1, 1, 1), 0, blit_material)
+	blit_material.blend_mode = BlitMaterial.BLEND_MODE_MUL
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:

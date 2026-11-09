@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://cfl7dw4qcxeu4"]
 
 [ext_resource type="Texture2D" uid="uid://befoed6lhnffw" path="res://Areas/Top-Down/example_map.png" id="1_iejky"]
-[ext_resource type="Script" uid="uid://dudhg45mvt1b0" path="res://Areas/Top-Down/top_down_player.gd" id="2_mibml"]
+[ext_resource type="Script" uid="uid://bpawl75u3pnbt" path="res://Areas/Top-Down/top_down_player.gd" id="2_mibml"]
 [ext_resource type="Texture2D" uid="uid://ds77awv58pa3e" path="res://Areas/Top-Down/player_sprite.svg" id="2_xgnib"]
 [ext_resource type="Script" uid="uid://k8w28a6du5q5" path="res://Areas/Top-Down/fog.gd" id="4_cqrm3"]
 [ext_resource type="PackedScene" uid="uid://ci4j4sbbwqw8p" path="res://Entities/vignette_travel_node.tscn" id="5_vtusi"]
+[ext_resource type="Texture2D" uid="uid://ccnigadscw0mu" path="res://Areas/Top-Down/Lucious warden.jpg" id="6_3rtqp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oovfn"]
 radius = 36.0
@@ -66,29 +67,41 @@ shape = SubResource("RectangleShape2D_oovfn")
 unique_name_in_owner = true
 z_index = 2
 position = Vector2(3841.6362, 2143.6365)
-scale = Vector2(4, 4)
+scale = Vector2(4.05, 4.05)
 script = ExtResource("4_cqrm3")
 
 [node name="Test_Vignette_Travel_Node" parent="." unique_id=497482775 instance=ExtResource("5_vtusi")]
+z_index = 1
 position = Vector2(175, 125)
 vignette_file_name = "Movement_Test"
 
 [node name="Starting_Area_Vignette_Travel_Node" parent="." unique_id=1705709308 instance=ExtResource("5_vtusi")]
-position = Vector2(521, 440)
+z_index = 1
+position = Vector2(760, 588)
 vignette_file_name = "Starting_Area"
 
 [node name="River_Glade_Vignette_Travel_Node" parent="." unique_id=1450439072 instance=ExtResource("5_vtusi")]
-position = Vector2(2807, 3272)
+z_index = 1
+position = Vector2(3108, 3276)
 vignette_file_name = "River_Glade"
 
 [node name="Attack_Alcove_Vignette_Travel_Node" parent="." unique_id=1347985362 instance=ExtResource("5_vtusi")]
-position = Vector2(1419, 4041)
+z_index = 1
+position = Vector2(1630, 4076)
 vignette_file_name = "Attack_Alcove"
 
 [node name="Second_Ruins_Vignette_Travel_Node" parent="." unique_id=559020040 instance=ExtResource("5_vtusi")]
-position = Vector2(6241, 2264)
+z_index = 1
+position = Vector2(6150, 1949)
 vignette_file_name = "Second_Ruins"
 
 [node name="Sanctuary_Vignette_Travel_Node" parent="." unique_id=1627056499 instance=ExtResource("5_vtusi")]
-position = Vector2(3034, 1203)
+z_index = 1
+position = Vector2(3930, 952)
 vignette_file_name = "Sanctuary"
+
+[node name="Map_Sprite" type="Sprite2D" parent="." unique_id=1805123]
+position = Vector2(3837.5, 2161.75)
+scale = Vector2(4.796875, 4.805)
+texture = ExtResource("6_3rtqp")
+metadata/_edit_lock_ = true
