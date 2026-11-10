@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var fog = %Fog
+@onready var artifact_menu = %Artifact_Menu
 
 const FOG_CLEARING_ACCELERATION = 220
 const RETRACING_ACCELERATION = 950
@@ -19,7 +20,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	fog_texture = fog.fog_texture.get_image()
-	if fog_texture.get_pixel(self.position.x / 4, self.position.y / 4).a < 0.04:
+	if fog_texture.get_pixel(self.position.x / 4, self.position.y / 4).a < 0.05:
 		acceleration = RETRACING_ACCELERATION
 		speed = RETRACING_SPEED
 	else:
@@ -28,7 +29,7 @@ func _physics_process(delta: float) -> void:
 				acceleration = FOG_CLEARING_ACCELERATION
 			else:
 				acceleration = FOG_CLEARING_ACCELERATION * 1.5
-			speed = FOG_CLEARING_SPEED
+		speed = FOG_CLEARING_SPEED
 	
 	direction = Vector2(
 		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
@@ -39,5 +40,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, acceleration * delta)
 		velocity.y = move_toward(velocity.y, 0, acceleration * delta)
-	
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Open_Artifact_Menu"):
+		if artifact_menu.visible == false:
+			artifact_menu.Open()
+		else:
+			artifact_menu.Close()
 	move_and_slide()

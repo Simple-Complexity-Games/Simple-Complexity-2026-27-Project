@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://k8w28a6du5q5" path="res://Areas/Top-Down/fog.gd" id="4_cqrm3"]
 [ext_resource type="PackedScene" uid="uid://ci4j4sbbwqw8p" path="res://Entities/vignette_travel_node.tscn" id="5_vtusi"]
 [ext_resource type="Texture2D" uid="uid://ccnigadscw0mu" path="res://Areas/Top-Down/Lucious warden.jpg" id="6_3rtqp"]
+[ext_resource type="Script" uid="uid://oho778l1m58c" path="res://Areas/Top-Down/artifact_menu.gd" id="7_i0kcm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oovfn"]
 radius = 36.0
@@ -23,6 +24,12 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oovfn"]
 size = Vector2(120, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcnqj"]
+size = Vector2(68, 4328)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjme"]
+size = Vector2(7808, 144)
 
 [node name="Node2D" type="Node2D" unique_id=2090069428]
 metadata/_edit_lock_ = true
@@ -105,3 +112,65 @@ position = Vector2(3837.5, 2161.75)
 scale = Vector2(4.796875, 4.805)
 texture = ExtResource("6_3rtqp")
 metadata/_edit_lock_ = true
+
+[node name="Borders" type="Node2D" parent="." unique_id=525861447]
+
+[node name="Left_Border" type="StaticBody2D" parent="Borders" unique_id=1646514641]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left_Border" unique_id=1518723504]
+position = Vector2(-30, 2164)
+shape = SubResource("RectangleShape2D_pcnqj")
+
+[node name="Right_Border" type="StaticBody2D" parent="Borders" unique_id=1185791059]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Right_Border" unique_id=1029012562]
+position = Vector2(7708, 2160)
+shape = SubResource("RectangleShape2D_pcnqj")
+
+[node name="Top_Border" type="StaticBody2D" parent="Borders" unique_id=395129850]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Top_Border" unique_id=116223940]
+position = Vector2(3840, 8)
+shape = SubResource("RectangleShape2D_yqjme")
+
+[node name="Bottom_Border" type="StaticBody2D" parent="Borders" unique_id=1774249006]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Bottom_Border" unique_id=1292449175]
+position = Vector2(3840, 4416)
+shape = SubResource("RectangleShape2D_yqjme")
+
+[node name="Artifact_Menu" type="Control" parent="." unique_id=898104167]
+unique_name_in_owner = true
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1896.0
+offset_top = 1224.0
+offset_right = 5792.0
+offset_bottom = 3064.0
+script = ExtResource("7_i0kcm")
+
+[node name="Panel" type="Panel" parent="Artifact_Menu" unique_id=1223515820]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Inner_Panel" type="Panel" parent="Artifact_Menu" unique_id=1922599721]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = 264.0
+offset_right = -88.0
+offset_bottom = -80.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Artifact_Menu" unique_id=576493210]
+layout_mode = 0
+offset_right = 3896.0
+offset_bottom = 248.0
+theme_override_font_sizes/normal_font_size = 150
+text = "Artifacts"
+horizontal_alignment = 1
+vertical_alignment = 1

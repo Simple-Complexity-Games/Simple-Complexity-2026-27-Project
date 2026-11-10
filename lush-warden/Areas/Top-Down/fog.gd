@@ -95,11 +95,11 @@ func Create_Fog_Texture():
 	fog_texture.setup(texture_size.x, texture_size.y, DrawableTexture2D.DRAWABLE_FORMAT_RGBA8, Color(0.9, 0.9, 0.9, 0.97), false)
 	var noise_texture = NoiseTexture2D.new()
 	var gradient = Gradient.new()
-	gradient.add_point(0, Color(0.9, 0.9, 0.9, 0.935))
-	gradient.add_point(1, Color(0.7, 0.7, 0.7, 1))
+	gradient.add_point(0, Color(0.9, 0.9, 0.9, 0.942))
+	gradient.add_point(1, Color(0.3, 0.3, 0.3, 1))
 	noise_texture.color_ramp = gradient
-	noise_texture.height = 220
-	noise_texture.width = 220
+	noise_texture.height = 200
+	noise_texture.width = 200
 	var noise = FastNoiseLite.new()
 	noise.seed = randi()
 	noise_texture.noise = noise
