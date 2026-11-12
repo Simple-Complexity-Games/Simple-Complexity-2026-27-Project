@@ -96,7 +96,7 @@ func Create_Fog_Texture():
 	var noise_texture = NoiseTexture2D.new()
 	var gradient = Gradient.new()
 	gradient.add_point(0, Color(0.9, 0.9, 0.9, 0.942))
-	gradient.add_point(1, Color(0.3, 0.3, 0.3, 1))
+	gradient.add_point(1, Color(0.1, 0.1, 0.1, 1))
 	noise_texture.color_ramp = gradient
 	noise_texture.height = 200
 	noise_texture.width = 200

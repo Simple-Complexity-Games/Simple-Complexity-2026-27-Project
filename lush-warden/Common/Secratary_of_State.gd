@@ -2,6 +2,7 @@ extends Node
 
 var Health = 9
 var Max_Health = 9
+var Items = {"placeholder":"res://Items/Placeholder.tscn"}
 
 var travel_node_suffix = "_Vignette_Travel_Node"
 

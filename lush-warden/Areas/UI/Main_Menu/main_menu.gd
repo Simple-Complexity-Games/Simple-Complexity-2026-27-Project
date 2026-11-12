@@ -1177,12 +1177,20 @@ func Apply_Config(config_file, utility = false):
 		# Very important to divide each of these by around 100 to get a range close to 0-1
 		# because otherwise upon loading an existing config file the player's eardrums will be blasted out by 
 		# horribly deep-fried and amplified audio (ask me how I know)
+		AudioServer.set_bus_volume_linear(0, 0.8)
+		print(AudioServer.get_bus_volume_linear(0))
+		print(AudioServer.get_bus_volume_linear(1))
+		print(AudioServer.get_bus_volume_linear(2))
+		print(config_file.get_value("Audio", "Master_Volume") / 80.0)
 		AudioServer.set_bus_volume_linear(0, config_file.get_value("Audio", "Master_Volume") / 80.0)
 		Master_Volume_Slider.value = config_file.get_value("Audio", "Master_Volume")
 		AudioServer.set_bus_volume_linear(1, config_file.get_value("Audio", "Music_Volume") / 80.0)
 		Music_Volume_Slider.value = config_file.get_value("Audio", "Music_Volume")
 		AudioServer.set_bus_volume_linear(2, config_file.get_value("Audio", "SFX_Volume") / 80.0)
 		SFX_Volume_Slider.value = config_file.get_value("Audio", "SFX_Volume")
+		print(AudioServer.get_bus_volume_linear(0))
+		print(AudioServer.get_bus_volume_linear(1))
+		print(AudioServer.get_bus_volume_linear(2))
 	#endregion
 	
 	#region <> Video settings
