@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://o5nfjbprwp7x"]
+
+[ext_resource type="Script" uid="uid://tlrungy2iwkm" path="res://Areas/Combat/TurnBasedController.gd" id="1_s2dqy"]
+
+[node name="TurnBasedController" type="Node" unique_id=1780561975]
+script = ExtResource("1_s2dqy")

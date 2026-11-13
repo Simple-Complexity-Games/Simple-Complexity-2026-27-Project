@@ -1,9 +1,60 @@
 [gd_scene format=3 uid="uid://coikg87dob56u"]
 
 [ext_resource type="Texture2D" uid="uid://dw61n1xav58rw" path="res://Assets/Henson.jpg" id="1_fgds1"]
+[ext_resource type="Script" uid="uid://d4kii17tts1uv" path="res://Areas/Combat/CombatCharacter.gd" id="1_hcbub"]
 [ext_resource type="PackedScene" uid="uid://ccm4e5yqw4c57" path="res://Areas/Combat/TargetNode.tscn" id="2_0dlmo"]
 [ext_resource type="PackedScene" uid="uid://bbrysr4unum5v" path="res://Areas/Combat/AttackMenu.tscn" id="2_kcxw6"]
 [ext_resource type="Script" uid="uid://doot1u4v4seih" path="res://Areas/Combat/AttackMenu.gd" id="3_0dlmo"]
+[ext_resource type="Texture2D" uid="uid://wb527yk2dusv" path="res://Areas/Combat/Agony.png" id="5_77r3b"]
+[ext_resource type="Resource" uid="uid://dk0ecxrocndnp" path="res://Areas/Combat/FastAttack.tres" id="5_mwrcc"]
+[ext_resource type="Resource" uid="uid://cn4l72r1uh5n6" path="res://Areas/Combat/MediumAttack.tres" id="6_jfklj"]
+[ext_resource type="Resource" uid="uid://dlfn1xgojqkyk" path="res://Areas/Combat/SlowAttack.tres" id="7_kpwxl"]
+[ext_resource type="Texture2D" uid="uid://dg2tsf42du0um" path="res://Areas/Combat/Bambi Sheet.png" id="7_mwrcc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfklj"]
+atlas = ExtResource("7_mwrcc")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpwxl"]
+atlas = ExtResource("7_mwrcc")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38j3g"]
+atlas = ExtResource("7_mwrcc")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqc7l"]
+atlas = ExtResource("7_mwrcc")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vxg2r"]
+animations = [{
+"frames": [{
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_jfklj")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_kpwxl")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_38j3g")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_eqc7l")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_38j3g")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_kpwxl")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_jfklj")
+}],
+"loop": 0,
+"name": &"murderorbshoot",
+"speed": 5.0
+}]
 
 [node name="Combat" type="Node2D" unique_id=2140955922]
 
@@ -19,50 +70,90 @@ limit_top = 0
 limit_right = 1920
 limit_bottom = 1080
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1720919845]
+[node name="Player" type="StaticBody2D" parent="." unique_id=1720919845]
 position = Vector2(981, 898)
+script = ExtResource("1_hcbub")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4" unique_id=283863487]
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=283863487]
 modulate = Color(0, 1, 0.50980395, 1)
 position = Vector2(3, -3)
 scale = Vector2(0.38495576, 0.38495576)
 texture = ExtResource("1_fgds1")
 
-[node name="TargetNode" parent="StaticBody2D4" unique_id=260314735 instance=ExtResource("2_0dlmo")]
+[node name="TargetNode" parent="Player" unique_id=260314735 instance=ExtResource("2_0dlmo")]
 Target_Character_Type = 1
+FastAttack = ExtResource("5_mwrcc")
+MediumAttack = ExtResource("6_jfklj")
+SlowAttack = ExtResource("7_kpwxl")
 
-[node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=2096538657]
+[node name="Enemy3" type="StaticBody2D" parent="." unique_id=2096538657]
 position = Vector2(1537, 384)
+script = ExtResource("1_hcbub")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D5" unique_id=43771719]
-modulate = Color(1, 0.39215687, 0.39215687, 1)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Enemy3" unique_id=1524825600]
 position = Vector2(3, -3)
-scale = Vector2(0.38495576, 0.38495576)
-texture = ExtResource("1_fgds1")
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_vxg2r")
+animation = &"murderorbshoot"
+frame = 6
+frame_progress = 1.0
 
-[node name="TargetNode" parent="StaticBody2D5" unique_id=439332821 instance=ExtResource("2_0dlmo")]
+[node name="TargetNode" parent="Enemy3" unique_id=439332821 instance=ExtResource("2_0dlmo")]
+FastAttack = ExtResource("5_mwrcc")
+MediumAttack = ExtResource("6_jfklj")
+SlowAttack = ExtResource("7_kpwxl")
 
-[node name="StaticBody2D6" type="StaticBody2D" parent="." unique_id=705676985]
+[node name="orbofpain" type="Sprite2D" parent="Enemy3/TargetNode" unique_id=507716028]
+visible = false
+position = Vector2(1623, 407)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_77r3b")
+
+[node name="Enemy1" type="StaticBody2D" parent="." unique_id=705676985]
 position = Vector2(981, 222)
+script = ExtResource("1_hcbub")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D6" unique_id=153951673]
-modulate = Color(1, 0.39215687, 0.39215687, 1)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Enemy1" unique_id=725181907]
 position = Vector2(3, -3)
-scale = Vector2(0.38495576, 0.38495576)
-texture = ExtResource("1_fgds1")
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_vxg2r")
+animation = &"murderorbshoot"
+frame = 6
+frame_progress = 1.0
 
-[node name="TargetNode" parent="StaticBody2D6" unique_id=1386530628 instance=ExtResource("2_0dlmo")]
+[node name="TargetNode" parent="Enemy1" unique_id=1386530628 instance=ExtResource("2_0dlmo")]
+FastAttack = ExtResource("5_mwrcc")
+MediumAttack = ExtResource("6_jfklj")
+SlowAttack = ExtResource("7_kpwxl")
 
-[node name="StaticBody2D7" type="StaticBody2D" parent="." unique_id=588092230]
+[node name="orbofpain" type="Sprite2D" parent="Enemy1/TargetNode" unique_id=1658720050]
+visible = false
+position = Vector2(1066, 238)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_77r3b")
+
+[node name="Enemy2" type="StaticBody2D" parent="." unique_id=588092230]
 position = Vector2(452, 382)
+script = ExtResource("1_hcbub")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D7" unique_id=195878789]
-modulate = Color(1, 0.39215687, 0.39215687, 1)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Enemy2" unique_id=1526558680]
 position = Vector2(3, -3)
-scale = Vector2(0.38495576, 0.38495576)
-texture = ExtResource("1_fgds1")
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_vxg2r")
+animation = &"murderorbshoot"
+frame = 6
+frame_progress = 1.0
 
-[node name="TargetNode" parent="StaticBody2D7" unique_id=1229277371 instance=ExtResource("2_0dlmo")]
+[node name="TargetNode" parent="Enemy2" unique_id=1229277371 instance=ExtResource("2_0dlmo")]
+FastAttack = ExtResource("5_mwrcc")
+MediumAttack = ExtResource("6_jfklj")
+SlowAttack = ExtResource("7_kpwxl")
+
+[node name="orbofpain" type="Sprite2D" parent="Enemy2/TargetNode" unique_id=294877589]
+visible = false
+position = Vector2(537, 399)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_77r3b")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1586613067]
 

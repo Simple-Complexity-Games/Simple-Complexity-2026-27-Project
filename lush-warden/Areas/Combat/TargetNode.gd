@@ -2,12 +2,18 @@ extends Node
 class_name TurnBasedAgent
 
 @export var Target_Character_Type: Character_Type
+@export var Enemy_Class: Resource
 @export var Target_Icon_Offset: Vector2 = Vector2(50, 0)
 @export var On_Turn_Icon_Offset: Vector2 = Vector2(0, -50)
 
 @onready var Target_Icon: TextureRect = %TargetIcon
 @onready var On_Turn_Icon: TextureRect = %OnTurnIcon
 @onready var Attack_Resource = preload("res://Areas/Combat/AttackResource.gd")
+
+@export var FastAttack: Resource
+@export var MediumAttack: Resource
+@export var SlowAttack: Resource
+
 
 @export var Is_Active = false
 
@@ -19,6 +25,7 @@ enum Character_Type {Enemy, Player}
 signal Target_Confirmed(target: TurnBasedAgent, command: Resource)
 signal Attack_Cancelled
 signal Selection_Finished
+signal Player_Turn_Started
 
 func _get_global_position():
 	
@@ -65,9 +72,9 @@ func _set_active(boolean: bool) -> void:
 	Is_Active = boolean
 	
 	if Is_Active:
-		pass
+		On_Turn_Icon.show()
 	else:
-		pass
+		On_Turn_Icon.show()
 
 func _set_on_turn_icon():
 	
