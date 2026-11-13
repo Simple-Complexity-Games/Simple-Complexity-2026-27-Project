@@ -28,8 +28,10 @@ grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("1_wqme5")
 script = ExtResource("2_exqw0")
+metadata/_edit_lock_ = true
 
 [node name="Background_Color" type="ColorRect" parent="." unique_id=1970288091]
+visible = false
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -48,6 +50,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("3_kdb2k")
 stretch_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="Music_Player" type="AudioStreamPlayer" parent="." unique_id=1266979769]
 stream = ExtResource("4_kdb2k")
@@ -61,6 +64,7 @@ volume_db = -2.811
 bus = &"SFX"
 
 [node name="Title_Label" type="RichTextLabel" parent="." unique_id=1195901174 groups=["Hoverable"]]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.083
@@ -81,6 +85,7 @@ text = "Lushwarden"
 horizontal_alignment = 1
 
 [node name="Main_Menu_Container" type="VBoxContainer" parent="." unique_id=260904405]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.267
@@ -652,6 +657,7 @@ offset_bottom = -0.0400391
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Controls_Menu_Label" type="RichTextLabel" parent="Controls_Menu_Container" unique_id=1715008083 groups=["Hoverable"]]
 layout_mode = 1
@@ -682,7 +688,8 @@ anchors_preset = -1
 anchor_top = -0.378
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 448.08
+offset_top = 568.08
+offset_bottom = 120.0
 focus_neighbor_top = NodePath("../GridContainer/Jump_Bind_Button")
 focus_next = NodePath("../GridContainer/Left_Bind_Button")
 focus_previous = NodePath("../GridContainer/Jump_Bind_Button")
@@ -698,7 +705,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.822
 offset_top = -16.0
-offset_bottom = -15.92
+offset_bottom = 112.07999
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 16
@@ -724,13 +731,14 @@ metadata/_edit_group_ = true
 
 [node name="Left_Label" type="RichTextLabel" parent="Controls_Menu_Container/GridContainer/Left_Bind_Button" unique_id=630018046 groups=["Hoverable"]]
 modulate = Color(0.498039, 0.839216, 0.545098, 1)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
-offset_top = 8.0
-offset_right = -336.0
-offset_bottom = -8.0
+offset_right = -327.99988
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 50
 theme_override_font_sizes/bold_font_size = 50
@@ -745,10 +753,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 112.0
+offset_left = 107.000114
 offset_top = 8.0
-offset_right = 672.0
-offset_bottom = 145.0
+offset_right = 682.62476
+offset_bottom = 111.0
 scale = Vector2(0.32, 0.32)
 layout_direction = 2
 metadata/_edit_group_ = true
@@ -774,7 +782,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 312.0
+offset_left = 336.00012
 offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -8.0
@@ -783,7 +791,7 @@ focus_neighbor_right = NodePath("../../Right_Bind_Button")
 focus_neighbor_bottom = NodePath("../../Up_Bind_Button/Up_Unbind_Button")
 focus_next = NodePath("../../Right_Bind_Button")
 focus_previous = NodePath("..")
-theme_override_font_sizes/font_size = 27
+theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = ExtResource("7_jewm6")
 theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
 theme_override_styles/hover_pressed = ExtResource("7_jewm6")
@@ -810,13 +818,14 @@ metadata/_edit_group_ = true
 
 [node name="Right_Label" type="RichTextLabel" parent="Controls_Menu_Container/GridContainer/Right_Bind_Button" unique_id=1595153993 groups=["Hoverable"]]
 modulate = Color(0.498039, 0.839216, 0.545098, 1)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
-offset_top = 8.0
 offset_right = -295.0
-offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 50
 theme_override_font_sizes/bold_font_size = 50
@@ -831,10 +840,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 136.0
+offset_left = 137.00015
 offset_top = 8.0
-offset_right = 621.0
-offset_bottom = 145.0
+offset_right = 618.87463
+offset_bottom = 111.0
 scale = Vector2(0.32, 0.32)
 layout_direction = 2
 metadata/_edit_group_ = true
@@ -860,7 +869,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 304.0
+offset_left = 336.00012
 offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -8.0
@@ -868,7 +877,7 @@ focus_neighbor_left = NodePath("..")
 focus_neighbor_bottom = NodePath("../../Down_Bind_Button/Down_Unbind_Button")
 focus_next = NodePath("../../Up_Bind_Button")
 focus_previous = NodePath("..")
-theme_override_font_sizes/font_size = 27
+theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = ExtResource("7_jewm6")
 theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
 theme_override_styles/hover_pressed = ExtResource("7_jewm6")
@@ -895,13 +904,14 @@ metadata/_edit_group_ = true
 
 [node name="Up_Label" type="RichTextLabel" parent="Controls_Menu_Container/GridContainer/Up_Bind_Button" unique_id=252910146 groups=["Hoverable"]]
 modulate = Color(0.498039, 0.839216, 0.545098, 1)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
-offset_top = 8.0
-offset_right = -360.0
-offset_bottom = -8.0
+offset_right = -351.99988
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 50
 theme_override_font_sizes/bold_font_size = 50
@@ -919,7 +929,7 @@ anchor_bottom = 1.0
 offset_left = 88.0
 offset_top = 8.0
 offset_right = 723.0
-offset_bottom = 145.0
+offset_bottom = 111.0
 scale = Vector2(0.32, 0.32)
 layout_direction = 2
 metadata/_edit_group_ = true
@@ -945,7 +955,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 304.0
+offset_left = 336.00012
 offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -8.0
@@ -955,7 +965,7 @@ focus_neighbor_right = NodePath("../../Down_Bind_Button")
 focus_neighbor_bottom = NodePath("../../Jump_Bind_Button/Jump_Unbind_Button")
 focus_next = NodePath("../../Down_Bind_Button")
 focus_previous = NodePath("..")
-theme_override_font_sizes/font_size = 27
+theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = ExtResource("7_jewm6")
 theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
 theme_override_styles/hover_pressed = ExtResource("7_jewm6")
@@ -972,7 +982,7 @@ size_flags_vertical = 3
 focus_neighbor_left = NodePath("../Up_Bind_Button/Up_Unbind_Button")
 focus_neighbor_top = NodePath("../Right_Bind_Button")
 focus_neighbor_right = NodePath("Down_Unbind_Button")
-focus_neighbor_bottom = NodePath("../Glide_Bind_Button")
+focus_neighbor_bottom = NodePath("../Interact_Bind_Button")
 focus_next = NodePath("Down_Unbind_Button")
 focus_previous = NodePath("../Up_Bind_Button/Up_Unbind_Button")
 theme_override_styles/hover = ExtResource("7_jewm6")
@@ -983,13 +993,14 @@ metadata/_edit_group_ = true
 
 [node name="Down_Label" type="RichTextLabel" parent="Controls_Menu_Container/GridContainer/Down_Bind_Button" unique_id=1538545598 groups=["Hoverable"]]
 modulate = Color(0.498039, 0.839216, 0.545098, 1)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
-offset_top = 8.0
-offset_right = -296.0
-offset_bottom = -8.0
+offset_right = -287.99988
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 50
 theme_override_font_sizes/bold_font_size = 50
@@ -1004,10 +1015,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 144.0
+offset_left = 147.00015
 offset_top = 8.0
-offset_right = 604.0
-offset_bottom = 145.0
+offset_right = 597.62463
+offset_bottom = 111.0
 scale = Vector2(0.32, 0.32)
 layout_direction = 2
 metadata/_edit_group_ = true
@@ -1033,16 +1044,16 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 304.0
+offset_left = 336.00012
 offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -8.0
 focus_neighbor_left = NodePath("..")
 focus_neighbor_top = NodePath("../../Right_Bind_Button/Right_Unbind_Button")
-focus_neighbor_bottom = NodePath("../../Glide_Bind_Button/Glide_Unbind_Button")
+focus_neighbor_bottom = NodePath("../../Interact_Bind_Button/Interact_Unbind_Button")
 focus_next = NodePath("../../Jump_Bind_Button")
 focus_previous = NodePath("..")
-theme_override_font_sizes/font_size = 27
+theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = ExtResource("7_jewm6")
 theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
 theme_override_styles/hover_pressed = ExtResource("7_jewm6")
@@ -1069,13 +1080,14 @@ metadata/_edit_group_ = true
 
 [node name="Jump_Label" type="RichTextLabel" parent="Controls_Menu_Container/GridContainer/Jump_Bind_Button" unique_id=914129090 groups=["Hoverable"]]
 modulate = Color(0.498039, 0.839216, 0.545098, 1)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
-offset_top = 8.0
-offset_right = -312.0
-offset_bottom = -8.0
+offset_right = -295.99988
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 50
 theme_override_font_sizes/bold_font_size = 50
@@ -1093,7 +1105,7 @@ anchor_bottom = 1.0
 offset_left = 136.0
 offset_top = 8.0
 offset_right = 621.0
-offset_bottom = 145.0
+offset_bottom = 111.0
 scale = Vector2(0.32, 0.32)
 layout_direction = 2
 metadata/_edit_group_ = true
@@ -1119,17 +1131,17 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 304.0
+offset_left = 336.00012
 offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -8.0
 focus_neighbor_left = NodePath("..")
 focus_neighbor_top = NodePath("../../Up_Bind_Button/Up_Unbind_Button")
-focus_neighbor_right = NodePath("../../Glide_Bind_Button")
+focus_neighbor_right = NodePath("../../Interact_Bind_Button")
 focus_neighbor_bottom = NodePath("../../../Controls_Done_Button")
-focus_next = NodePath("../../Glide_Bind_Button")
+focus_next = NodePath("../../Interact_Bind_Button")
 focus_previous = NodePath("..")
-theme_override_font_sizes/font_size = 27
+theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = ExtResource("7_jewm6")
 theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
 theme_override_styles/hover_pressed = ExtResource("7_jewm6")
@@ -1137,53 +1149,54 @@ theme_override_styles/hover_pressed_mirrored = ExtResource("7_jewm6")
 text = "Unbind
 Oldest"
 
-[node name="Glide_Bind_Button" type="Button" parent="Controls_Menu_Container/GridContainer" unique_id=381030041 groups=["Hoverable"]]
+[node name="Interact_Bind_Button" type="Button" parent="Controls_Menu_Container/GridContainer" unique_id=381030041 groups=["Hoverable"]]
 self_modulate = Color(0.498039, 0.839216, 0.545098, 1)
 custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
 focus_neighbor_top = NodePath("../Down_Bind_Button")
-focus_neighbor_right = NodePath("Glide_Unbind_Button")
+focus_neighbor_right = NodePath("Interact_Unbind_Button")
 focus_neighbor_bottom = NodePath("../../Controls_Done_Button")
-focus_next = NodePath("Glide_Unbind_Button")
+focus_next = NodePath("Interact_Unbind_Button")
 focus_previous = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
 theme_override_styles/hover = ExtResource("7_jewm6")
 theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
 theme_override_styles/hover_pressed = ExtResource("7_jewm6")
 theme_override_styles/hover_pressed_mirrored = ExtResource("7_jewm6")
 
-[node name="Glide_Label" type="RichTextLabel" parent="Controls_Menu_Container/GridContainer/Glide_Bind_Button" unique_id=877187976 groups=["Hoverable"]]
+[node name="Interact_Label" type="RichTextLabel" parent="Controls_Menu_Container/GridContainer/Interact_Bind_Button" unique_id=877187976 groups=["Hoverable"]]
 modulate = Color(0.498039, 0.839216, 0.545098, 1)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = -312.0
-offset_bottom = -8.0
+offset_left = 8.000122
+offset_right = -255.99988
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 50
 theme_override_font_sizes/bold_font_size = 50
 theme_override_font_sizes/bold_italics_font_size = 50
 theme_override_font_sizes/italics_font_size = 50
 theme_override_font_sizes/mono_font_size = 50
-text = "Glide:"
+text = "Interact:"
 vertical_alignment = 1
 
-[node name="Glide_Container" type="HBoxContainer" parent="Controls_Menu_Container/GridContainer/Glide_Bind_Button" unique_id=1353966488]
+[node name="Interact_Container" type="HBoxContainer" parent="Controls_Menu_Container/GridContainer/Interact_Bind_Button" unique_id=1353966488]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 136.0
+offset_left = 179.00015
 offset_top = 8.0
-offset_right = 621.0
-offset_bottom = 145.0
+offset_right = 529.62463
+offset_bottom = 111.0
 scale = Vector2(0.32, 0.32)
 layout_direction = 2
 metadata/_edit_group_ = true
 
-[node name="Glide_Bind_1" type="TextureRect" parent="Controls_Menu_Container/GridContainer/Glide_Bind_Button/Glide_Container" unique_id=1391224920 groups=["Hoverable"]]
+[node name="Interact_Bind_1" type="TextureRect" parent="Controls_Menu_Container/GridContainer/Interact_Bind_Button/Interact_Container" unique_id=1391224920 groups=["Hoverable"]]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_stretch_ratio = 0.3
@@ -1191,20 +1204,20 @@ texture = ExtResource("9_q6o50")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Glide_Bind_2" type="TextureRect" parent="Controls_Menu_Container/GridContainer/Glide_Bind_Button/Glide_Container" unique_id=1441611726 groups=["Hoverable"]]
+[node name="Interact_Bind_2" type="TextureRect" parent="Controls_Menu_Container/GridContainer/Interact_Bind_Button/Interact_Container" unique_id=1441611726 groups=["Hoverable"]]
 layout_mode = 2
 size_flags_horizontal = 2
 texture = ExtResource("10_46hhv")
 expand_mode = 2
 stretch_mode = 6
 
-[node name="Glide_Unbind_Button" type="Button" parent="Controls_Menu_Container/GridContainer/Glide_Bind_Button" unique_id=2078403635 groups=["Hoverable"]]
+[node name="Interact_Unbind_Button" type="Button" parent="Controls_Menu_Container/GridContainer/Interact_Bind_Button" unique_id=2078403635 groups=["Hoverable"]]
 modulate = Color(0.972629, 0.296293, 0.305728, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 304.0
+offset_left = 336.00012
 offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -8.0
@@ -1213,7 +1226,262 @@ focus_neighbor_top = NodePath("../../Down_Bind_Button/Down_Unbind_Button")
 focus_neighbor_bottom = NodePath("../../../Controls_Done_Button")
 focus_next = NodePath("../../../Controls_Done_Button")
 focus_previous = NodePath("..")
-theme_override_font_sizes/font_size = 27
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = ExtResource("7_jewm6")
+theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
+theme_override_styles/hover_pressed = ExtResource("7_jewm6")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_jewm6")
+text = "Unbind
+Oldest"
+
+[node name="Return_Bind_Button" type="Button" parent="Controls_Menu_Container/GridContainer" unique_id=896270558 groups=["Hoverable"]]
+self_modulate = Color(0.498039, 0.839216, 0.545098, 1)
+custom_minimum_size = Vector2(128, 72)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
+focus_neighbor_top = NodePath("../Down_Bind_Button")
+focus_neighbor_right = NodePath("Return_Unbind_Button")
+focus_neighbor_bottom = NodePath("../../Controls_Done_Button")
+focus_next = NodePath("Return_Unbind_Button")
+focus_previous = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
+theme_override_styles/hover = ExtResource("7_jewm6")
+theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
+theme_override_styles/hover_pressed = ExtResource("7_jewm6")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_jewm6")
+
+[node name="Return_Label" type="RichTextLabel" parent="Controls_Menu_Container/GridContainer/Return_Bind_Button" unique_id=123965587 groups=["Hoverable"]]
+modulate = Color(0.498039, 0.839216, 0.545098, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.000122
+offset_right = -189.99988
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+text = "Return:"
+vertical_alignment = 1
+
+[node name="Return_Container" type="HBoxContainer" parent="Controls_Menu_Container/GridContainer/Return_Bind_Button" unique_id=537459524]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 164.00015
+offset_top = 8.0
+offset_right = 328.00012
+offset_bottom = 111.0
+scale = Vector2(0.32, 0.32)
+layout_direction = 2
+metadata/_edit_group_ = true
+
+[node name="Return_Bind_1" type="TextureRect" parent="Controls_Menu_Container/GridContainer/Return_Bind_Button/Return_Container" unique_id=1853134637 groups=["Hoverable"]]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.3
+texture = ExtResource("9_q6o50")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Return_Bind_2" type="TextureRect" parent="Controls_Menu_Container/GridContainer/Return_Bind_Button/Return_Container" unique_id=518916985 groups=["Hoverable"]]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("10_46hhv")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Return_Unbind_Button" type="Button" parent="Controls_Menu_Container/GridContainer/Return_Bind_Button" unique_id=1848969371 groups=["Hoverable"]]
+modulate = Color(0.972629, 0.296293, 0.305728, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 344.00012
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+focus_neighbor_left = NodePath("..")
+focus_neighbor_top = NodePath("../../Down_Bind_Button/Down_Unbind_Button")
+focus_neighbor_bottom = NodePath("../../../Controls_Done_Button")
+focus_next = NodePath("../../../Controls_Done_Button")
+focus_previous = NodePath("..")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = ExtResource("7_jewm6")
+theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
+theme_override_styles/hover_pressed = ExtResource("7_jewm6")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_jewm6")
+text = "Unbind
+Oldest"
+
+[node name="Menu_Bind_Button" type="Button" parent="Controls_Menu_Container/GridContainer" unique_id=1251769995 groups=["Hoverable"]]
+self_modulate = Color(0.498039, 0.839216, 0.545098, 1)
+custom_minimum_size = Vector2(128, 72)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
+focus_neighbor_top = NodePath("../Down_Bind_Button")
+focus_neighbor_right = NodePath("Menu_Unbind_Button")
+focus_neighbor_bottom = NodePath("../../Controls_Done_Button")
+focus_next = NodePath("Menu_Unbind_Button")
+focus_previous = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
+theme_override_styles/hover = ExtResource("7_jewm6")
+theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
+theme_override_styles/hover_pressed = ExtResource("7_jewm6")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_jewm6")
+
+[node name="Menu_Label" type="RichTextLabel" parent="Controls_Menu_Container/GridContainer/Menu_Bind_Button" unique_id=398411898 groups=["Hoverable"]]
+modulate = Color(0.498039, 0.839216, 0.545098, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.000122
+offset_right = -303.99988
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+text = "Menu:"
+vertical_alignment = 1
+
+[node name="Menu_Container" type="HBoxContainer" parent="Controls_Menu_Container/GridContainer/Menu_Bind_Button" unique_id=1795535413]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 144.00012
+offset_top = 8.0
+offset_right = 279.00012
+offset_bottom = 111.0
+scale = Vector2(0.32, 0.32)
+layout_direction = 2
+metadata/_edit_group_ = true
+
+[node name="Menu_Bind_1" type="TextureRect" parent="Controls_Menu_Container/GridContainer/Menu_Bind_Button/Menu_Container" unique_id=411162728 groups=["Hoverable"]]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.3
+texture = ExtResource("9_q6o50")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Menu_Bind_2" type="TextureRect" parent="Controls_Menu_Container/GridContainer/Menu_Bind_Button/Menu_Container" unique_id=374773596 groups=["Hoverable"]]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("10_46hhv")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Menu_Unbind_Button" type="Button" parent="Controls_Menu_Container/GridContainer/Menu_Bind_Button" unique_id=563890523 groups=["Hoverable"]]
+modulate = Color(0.972629, 0.296293, 0.305728, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 336.00012
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+focus_neighbor_left = NodePath("..")
+focus_neighbor_top = NodePath("../../Down_Bind_Button/Down_Unbind_Button")
+focus_neighbor_bottom = NodePath("../../../Controls_Done_Button")
+focus_next = NodePath("../../../Controls_Done_Button")
+focus_previous = NodePath("..")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = ExtResource("7_jewm6")
+theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
+theme_override_styles/hover_pressed = ExtResource("7_jewm6")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_jewm6")
+text = "Unbind
+Oldest"
+
+[node name="Artifacts_Bind_Button" type="Button" parent="Controls_Menu_Container/GridContainer" unique_id=149629781 groups=["Hoverable"]]
+self_modulate = Color(0.498039, 0.839216, 0.545098, 1)
+custom_minimum_size = Vector2(128, 72)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
+focus_neighbor_top = NodePath("../Down_Bind_Button")
+focus_neighbor_right = NodePath("Artifacts_Unbind_Button")
+focus_neighbor_bottom = NodePath("../../Controls_Done_Button")
+focus_next = NodePath("Artifacts_Unbind_Button")
+focus_previous = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
+theme_override_styles/hover = ExtResource("7_jewm6")
+theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
+theme_override_styles/hover_pressed = ExtResource("7_jewm6")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_jewm6")
+
+[node name="Artifacts_Label" type="RichTextLabel" parent="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button" unique_id=458081271 groups=["Hoverable"]]
+modulate = Color(0.498039, 0.839216, 0.545098, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.000122
+offset_right = -183.99988
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+text = "Inventory:"
+vertical_alignment = 1
+
+[node name="Artifacts_Container" type="HBoxContainer" parent="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button" unique_id=1873023456]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 216.00015
+offset_top = 8.0
+offset_right = 450.99963
+offset_bottom = 111.0
+scale = Vector2(0.32, 0.32)
+layout_direction = 2
+metadata/_edit_group_ = true
+
+[node name="Artifacts_Bind_1" type="TextureRect" parent="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button/Artifacts_Container" unique_id=619804660 groups=["Hoverable"]]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.3
+texture = ExtResource("9_q6o50")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Artifacts_Bind_2" type="TextureRect" parent="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button/Artifacts_Container" unique_id=786525150 groups=["Hoverable"]]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("10_46hhv")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Artifacts_Unbind_Button" type="Button" parent="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button" unique_id=1551044349 groups=["Hoverable"]]
+modulate = Color(0.972629, 0.296293, 0.305728, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 344.00012
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+focus_neighbor_left = NodePath("..")
+focus_neighbor_top = NodePath("../../Down_Bind_Button/Down_Unbind_Button")
+focus_neighbor_bottom = NodePath("../../../Controls_Done_Button")
+focus_next = NodePath("../../../Controls_Done_Button")
+focus_previous = NodePath("..")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = ExtResource("7_jewm6")
 theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
 theme_override_styles/hover_pressed = ExtResource("7_jewm6")
@@ -1305,8 +1573,20 @@ zoom = Vector2(1.05, 1.05)
 [connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Jump_Bind_Button" to="." method="_on_jump_bind_button_mouse_entered"]
 [connection signal="button_down" from="Controls_Menu_Container/GridContainer/Jump_Bind_Button/Jump_Unbind_Button" to="." method="_on_jump_unbind_button_button_down"]
 [connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Jump_Bind_Button/Jump_Unbind_Button" to="." method="_on_jump_unbind_button_mouse_entered"]
-[connection signal="button_down" from="Controls_Menu_Container/GridContainer/Glide_Bind_Button" to="." method="_on_glide_bind_button_button_down"]
-[connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Glide_Bind_Button" to="." method="_on_glide_bind_button_mouse_entered"]
-[connection signal="button_down" from="Controls_Menu_Container/GridContainer/Glide_Bind_Button/Glide_Unbind_Button" to="." method="_on_glide_unbind_button_button_down"]
-[connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Glide_Bind_Button/Glide_Unbind_Button" to="." method="_on_glide_unbind_button_mouse_entered"]
+[connection signal="button_down" from="Controls_Menu_Container/GridContainer/Interact_Bind_Button" to="." method="_on_interact_bind_button_button_down"]
+[connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Interact_Bind_Button" to="." method="_on_interact_bind_button_mouse_entered"]
+[connection signal="button_down" from="Controls_Menu_Container/GridContainer/Interact_Bind_Button/Interact_Unbind_Button" to="." method="_on_interact_unbind_button_button_down"]
+[connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Interact_Bind_Button/Interact_Unbind_Button" to="." method="_on_interact_unbind_button_mouse_entered"]
+[connection signal="button_down" from="Controls_Menu_Container/GridContainer/Return_Bind_Button" to="." method="_on_return_bind_button_button_down"]
+[connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Return_Bind_Button" to="." method="_on_return_bind_button_mouse_entered"]
+[connection signal="button_down" from="Controls_Menu_Container/GridContainer/Return_Bind_Button/Return_Unbind_Button" to="." method="_on_return_unbind_button_button_down"]
+[connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Return_Bind_Button/Return_Unbind_Button" to="." method="_on_return_unbind_button_mouse_entered"]
+[connection signal="button_down" from="Controls_Menu_Container/GridContainer/Menu_Bind_Button" to="." method="_on_menu_bind_button_button_down"]
+[connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Menu_Bind_Button" to="." method="_on_menu_bind_button_mouse_entered"]
+[connection signal="button_down" from="Controls_Menu_Container/GridContainer/Menu_Bind_Button/Menu_Unbind_Button" to="." method="_on_menu_unbind_button_button_down"]
+[connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Menu_Bind_Button/Menu_Unbind_Button" to="." method="_on_menu_unbind_button_mouse_entered"]
+[connection signal="button_down" from="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button" to="." method="_on_glide_bind_button_button_down"]
+[connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button" to="." method="_on_glide_bind_button_mouse_entered"]
+[connection signal="button_down" from="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button/Artifacts_Unbind_Button" to="." method="_on_glide_unbind_button_button_down"]
+[connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button/Artifacts_Unbind_Button" to="." method="_on_glide_unbind_button_mouse_entered"]
 [connection signal="pressed" from="Combat Test Button (Remove once done with combat)" to="." method="_on_emmetts_test_button_pressed"]
