@@ -27,7 +27,7 @@ signal Attack_Cancelled
 signal Selection_Finished
 signal Player_Turn_Started
 
-func _get_global_position():
+func get_global_position():
 	
 	return get_parent().global_position
 	
@@ -37,10 +37,12 @@ func _selection_finished():
 
 func _ready() -> void:
 	
-	_set_group()
+	print("TargetNodeReady")
+	
 	_set_target_icon()
 	_set_on_turn_icon()
 	_set_late_signals()
+	_set_group()
 	
 func _input(event: InputEvent) -> void:
 	
@@ -64,10 +66,10 @@ func _confirm_target():
 	
 	Target_Confirmed.emit(Target, Selected_Attack)
 	_deselect_all_targets()
-	_set_active(false)
+	set_active(false)
 	Target = null
 
-func _set_active(boolean: bool) -> void:
+func set_active(boolean: bool) -> void:
 	
 	Is_Active = boolean
 	
@@ -119,6 +121,8 @@ func _deselect_all_targets():
 		target.Target_Icon.hide()
 
 func _set_group():
+	
+	print("SettingGroups")
 	
 	add_to_group("TurnBasedAgents")
 	
