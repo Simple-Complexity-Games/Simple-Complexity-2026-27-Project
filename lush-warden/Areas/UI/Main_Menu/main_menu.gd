@@ -782,6 +782,32 @@ func _on_menu_unbind_button_button_down():
 	if InputMap.action_get_events("Menu").size() > 0:
 		var event_to_delete = InputMap.action_get_events("Menu")[InputMap.action_get_events("Menu").size() - 1]
 		InputMap.action_erase_event("Menu", event_to_delete)
+# Artifacts action rebind button
+func _on_artifacts_bind_button_mouse_entered():
+	Hover_SFX_Player.playing = true
+	Interact_Bind_Button.grab_focus()
+func _on_artifacts_bind_button_button_down():
+	Hover_SFX_Player.playing = true
+	start_rebinding = true
+	action_to_be_rebound = "Artifacts"
+# Artifacts action unbind button
+func _on_artifacts_unbind_button_mouse_entered():
+	Hover_SFX_Player.playing = true
+	Interact_Unbind_Button.grab_focus()
+func _on_artifacts_unbind_button_button_down():
+	Hover_SFX_Player.pitch_scale = 0.6
+	Hover_SFX_Player.playing = true
+	Hover_SFX_Player.pitch_scale = 1
+	if Interact_Bind_2.texture != null:
+		Interact_Bind_2.texture = null
+		Update_Config("Controls", "Artifacts", "", 1)
+	else:
+		Interact_Bind_1.texture = null
+		Update_Config("Controls", "Artifacts", "", 0)
+	# Delete end event in events list
+	if InputMap.action_get_events("Artifacts").size() > 0:
+		var event_to_delete = InputMap.action_get_events("Artifacts")[InputMap.action_get_events("Artifacts").size() - 1]
+		InputMap.action_erase_event("Artifacts", event_to_delete)
 # Done button 
 func _on_controls_done_button_mouse_entered():
 	Hover_SFX_Player.playing = true
@@ -1129,7 +1155,11 @@ func Create_Config(config_file):
 	config_file.set_value("Controls", "Up", ["k87", "k4194320"])
 	config_file.set_value("Controls", "Down", ["k83", "k4194322"])
 	config_file.set_value("Controls", "Jump", ["k32", "k67"])
-	config_file.set_value("Controls", "Glide", ["k4194325", "k90"])
+	config_file.set_value("Controls", "Interact", ["k69", "k88"])
+	config_file.set_value("Controls", "Return", ["k4194325", "k90"])
+	config_file.set_value("Controls", "Menu", ["k27", "k77"])
+	config_file.set_value("Controls", "Artifacts", ["k81", "k83"])
+	
 	
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
 		Save_Window_Size(960, 540)
