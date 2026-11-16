@@ -45,6 +45,8 @@ Dialog_Triggers=""
 AttackMenu=""
 Player=""
 Enemies=""
+TurnBasedController=""
+TargetNodes=""
 
 [input]
 

@@ -16,6 +16,9 @@ const Slow_Attack = preload("res://Areas/Combat/SlowAttack.tres")
 
 func _ready() -> void:
 	
+	print("AttackMenuReady")
+
+	
 	add_to_group("AttackMenu")
 	
 	Fast_Attack_Button.pressed.connect(_on_attack_pressed.bind(Fast_Attack))

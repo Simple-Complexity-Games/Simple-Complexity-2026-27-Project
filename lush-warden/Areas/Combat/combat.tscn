@@ -90,7 +90,7 @@ SlowAttack = ExtResource("7_kpwxl")
 position = Vector2(1537, 384)
 script = ExtResource("1_hcbub")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Enemy3" unique_id=1524825600]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy3" unique_id=1524825600]
 position = Vector2(3, -3)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_vxg2r")
@@ -113,7 +113,7 @@ texture = ExtResource("5_77r3b")
 position = Vector2(981, 222)
 script = ExtResource("1_hcbub")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Enemy1" unique_id=725181907]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy1" unique_id=725181907]
 position = Vector2(3, -3)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_vxg2r")
@@ -136,7 +136,7 @@ texture = ExtResource("5_77r3b")
 position = Vector2(452, 382)
 script = ExtResource("1_hcbub")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Enemy2" unique_id=1526558680]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy2" unique_id=1526558680]
 position = Vector2(3, -3)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_vxg2r")
