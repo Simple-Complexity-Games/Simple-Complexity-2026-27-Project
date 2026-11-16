@@ -42,10 +42,22 @@ extends Control
 @onready var Jump_Unbind_Button = get_node("Controls_Menu_Container/GridContainer/Jump_Bind_Button/Jump_Unbind_Button")
 @onready var Jump_Bind_1 = get_node("Controls_Menu_Container/GridContainer/Jump_Bind_Button/Jump_Container/Jump_Bind_1")
 @onready var Jump_Bind_2 = get_node("Controls_Menu_Container/GridContainer/Jump_Bind_Button/Jump_Container/Jump_Bind_2")
-@onready var Glide_Bind_Button = get_node("Controls_Menu_Container/GridContainer/Glide_Bind_Button")
-@onready var Glide_Unbind_Button = get_node("Controls_Menu_Container/GridContainer/Glide_Bind_Button/Glide_Unbind_Button")
-@onready var Glide_Bind_1 = get_node("Controls_Menu_Container/GridContainer/Glide_Bind_Button/Glide_Container/Glide_Bind_1")
-@onready var Glide_Bind_2 = get_node("Controls_Menu_Container/GridContainer/Glide_Bind_Button/Glide_Container/Glide_Bind_2")
+@onready var Interact_Bind_Button = get_node("Controls_Menu_Container/GridContainer/Interact_Bind_Button")
+@onready var Interact_Unbind_Button = get_node("Controls_Menu_Container/GridContainer/Interact_Bind_Button/Interact_Unbind_Button")
+@onready var Interact_Bind_1 = get_node("Controls_Menu_Container/GridContainer/Interact_Bind_Button/Interact_Container/Interact_Bind_1")
+@onready var Interact_Bind_2 = get_node("Controls_Menu_Container/GridContainer/Interact_Bind_Button/Interact_Container/Interact_Bind_2")
+@onready var Return_Bind_Button = get_node("Controls_Menu_Container/GridContainer/Return_Bind_Button")
+@onready var Return_Unbind_Button = get_node("Controls_Menu_Container/GridContainer/Return_Bind_Button/Return_Unbind_Button")
+@onready var Return_Bind_1 = get_node("Controls_Menu_Container/GridContainer/Return_Bind_Button/Return_Container/Return_Bind_1")
+@onready var Return_Bind_2 = get_node("Controls_Menu_Container/GridContainer/Return_Bind_Button/Return_Container/Return_Bind_2")
+@onready var Menu_Bind_Button = get_node("Controls_Menu_Container/GridContainer/Menu_Bind_Button")
+@onready var Menu_Unbind_Button = get_node("Controls_Menu_Container/GridContainer/Menu_Bind_Button/Menu_Unbind_Button")
+@onready var Menu_Bind_1 = get_node("Controls_Menu_Container/GridContainer/Menu_Bind_Button/Menu_Container/Menu_Bind_1")
+@onready var Menu_Bind_2 = get_node("Controls_Menu_Container/GridContainer/Menu_Bind_Button/Menu_Container/Menu_Bind_2")
+@onready var Artifacts_Bind_Button = get_node("Controls_Menu_Container/GridContainer/Artifacts_Bind_Button")
+@onready var Artifacts_Unbind_Button = get_node("Controls_Menu_Container/GridContainer/Artifacts_Bind_Button/Artifacts_Unbind_Button")
+@onready var Artifacts_Bind_1 = get_node("Controls_Menu_Container/GridContainer/Artifacts_Bind_Button/Artifacts_Container/Artifacts_Bind_1")
+@onready var Artifacts_Bind_2 = get_node("Controls_Menu_Container/GridContainer/Artifacts_Bind_Button/Artifacts_Container/Artifacts_Bind_2")
 @onready var Controls_Done_Button = get_node("Controls_Menu_Container/Controls_Done_Button")
 # Audio Menu
 @onready var Audio_Menu_Label = get_node("Audio_Menu_Label")
@@ -255,9 +267,9 @@ var config_update_cooldown_timer
 func _ready() -> void:
 	# This dict has to be defined in _ready() because it contains @onready vars which are not loaded until then
 	Rebind_Action_To_Primary_Icon_Node_Dict = {"Left":Left_Bind_1, "Right":Right_Bind_1, 
-	"Up":Up_Bind_1, "Down":Down_Bind_1, "Jump":Jump_Bind_1, "Glide":Glide_Bind_1}
+	"Up":Up_Bind_1, "Down":Down_Bind_1, "Jump":Jump_Bind_1, "Interact":Interact_Bind_1, "Return":Return_Bind_1, "Menu":Menu_Bind_1, "Artifacts":Artifacts_Bind_1}
 	Rebind_Action_To_Secondary_Icon_Node_Dict = {"Left":Left_Bind_2, "Right":Right_Bind_2, 
-	"Up":Up_Bind_2, "Down":Down_Bind_2, "Jump":Jump_Bind_2, "Glide":Glide_Bind_2}
+	"Up":Up_Bind_2, "Down":Down_Bind_2, "Jump":Jump_Bind_2, "Interact":Interact_Bind_2, "Return":Return_Bind_2, "Menu":Menu_Bind_2, "Artifacts":Artifacts_Bind_2}
 	
 	warp_timer = get_tree().create_timer(0.0, false, true)
 	slider_drag_step_timer = get_tree().create_timer(0.0, true, true)
@@ -692,32 +704,84 @@ func _on_jump_unbind_button_button_down():
 	if InputMap.action_get_events("Jump").size() > 0:
 		var event_to_delete = InputMap.action_get_events("Jump")[InputMap.action_get_events("Jump").size() - 1]
 		InputMap.action_erase_event("Jump", event_to_delete)
-# Glide action rebind button
-func _on_glide_bind_button_mouse_entered():
+# Interact action rebind button
+func _on_interact_bind_button_mouse_entered():
 	Hover_SFX_Player.playing = true
-	Glide_Bind_Button.grab_focus()
-func _on_glide_bind_button_button_down():
+	Interact_Bind_Button.grab_focus()
+func _on_interact_bind_button_button_down():
 	Hover_SFX_Player.playing = true
 	start_rebinding = true
-	action_to_be_rebound = "Glide"
-# Glide action unbind button
-func _on_glide_unbind_button_mouse_entered():
+	action_to_be_rebound = "Interact"
+# Interact action unbind button
+func _on_interact_unbind_button_mouse_entered():
 	Hover_SFX_Player.playing = true
-	Glide_Unbind_Button.grab_focus()
-func _on_glide_unbind_button_button_down():
+	Interact_Unbind_Button.grab_focus()
+func _on_interact_unbind_button_button_down():
 	Hover_SFX_Player.pitch_scale = 0.6
 	Hover_SFX_Player.playing = true
 	Hover_SFX_Player.pitch_scale = 1
-	if Glide_Bind_2.texture != null:
-		Glide_Bind_2.texture = null
-		Update_Config("Controls", "Glide", "", 1)
+	if Interact_Bind_2.texture != null:
+		Interact_Bind_2.texture = null
+		Update_Config("Controls", "Interact", "", 1)
 	else:
-		Glide_Bind_1.texture = null
-		Update_Config("Controls", "Glide", "", 0)
+		Interact_Bind_1.texture = null
+		Update_Config("Controls", "Interact", "", 0)
 	# Delete end event in events list
-	if InputMap.action_get_events("Glide").size() > 0:
-		var event_to_delete = InputMap.action_get_events("Glide")[InputMap.action_get_events("Glide").size() - 1]
-		InputMap.action_erase_event("Glide", event_to_delete)
+	if InputMap.action_get_events("Interact").size() > 0:
+		var event_to_delete = InputMap.action_get_events("Interact")[InputMap.action_get_events("Interact").size() - 1]
+		InputMap.action_erase_event("Interact", event_to_delete)
+# Return action rebind button
+func _on_return_bind_button_mouse_entered():
+	Hover_SFX_Player.playing = true
+	Interact_Bind_Button.grab_focus()
+func _on_return_bind_button_button_down():
+	Hover_SFX_Player.playing = true
+	start_rebinding = true
+	action_to_be_rebound = "Return"
+# Return action unbind button
+func _on_return_unbind_button_mouse_entered():
+	Hover_SFX_Player.playing = true
+	Interact_Unbind_Button.grab_focus()
+func _on_return_unbind_button_button_down():
+	Hover_SFX_Player.pitch_scale = 0.6
+	Hover_SFX_Player.playing = true
+	Hover_SFX_Player.pitch_scale = 1
+	if Interact_Bind_2.texture != null:
+		Interact_Bind_2.texture = null
+		Update_Config("Controls", "Return", "", 1)
+	else:
+		Interact_Bind_1.texture = null
+		Update_Config("Controls", "Return", "", 0)
+	# Delete end event in events list
+	if InputMap.action_get_events("Return").size() > 0:
+		var event_to_delete = InputMap.action_get_events("Return")[InputMap.action_get_events("Return").size() - 1]
+		InputMap.action_erase_event("Return", event_to_delete)
+# Menu action rebind button
+func _on_menu_bind_button_mouse_entered():
+	Hover_SFX_Player.playing = true
+	Interact_Bind_Button.grab_focus()
+func _on_menu_bind_button_button_down():
+	Hover_SFX_Player.playing = true
+	start_rebinding = true
+	action_to_be_rebound = "Menu"
+# Menu action unbind button
+func _on_menu_unbind_button_mouse_entered():
+	Hover_SFX_Player.playing = true
+	Interact_Unbind_Button.grab_focus()
+func _on_menu_unbind_button_button_down():
+	Hover_SFX_Player.pitch_scale = 0.6
+	Hover_SFX_Player.playing = true
+	Hover_SFX_Player.pitch_scale = 1
+	if Interact_Bind_2.texture != null:
+		Interact_Bind_2.texture = null
+		Update_Config("Controls", "Menu", "", 1)
+	else:
+		Interact_Bind_1.texture = null
+		Update_Config("Controls", "Menu", "", 0)
+	# Delete end event in events list
+	if InputMap.action_get_events("Menu").size() > 0:
+		var event_to_delete = InputMap.action_get_events("Menu")[InputMap.action_get_events("Menu").size() - 1]
+		InputMap.action_erase_event("Menu", event_to_delete)
 # Done button 
 func _on_controls_done_button_mouse_entered():
 	Hover_SFX_Player.playing = true
