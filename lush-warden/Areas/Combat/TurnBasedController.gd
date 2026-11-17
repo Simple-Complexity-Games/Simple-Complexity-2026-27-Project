@@ -22,10 +22,14 @@ func _set_after_all_ready():
 	_set_later_signals()
 	
 func _set_later_signals():
-	pass
 	
+	for Player: TurnBasedAgent in get_tree().get_nodes_in_group("TargetNodes"):
+		Player.Turn_Finished.connect(_on_turn_done)
 	
+func _on_turn_done():
 	
+	_set_next_active_character()
+
 func _set_turn_order():
 	
 	var Player = get_tree().get_nodes_in_group("Player")

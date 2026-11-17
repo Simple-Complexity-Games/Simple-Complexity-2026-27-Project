@@ -17,23 +17,42 @@ const Slow_Attack = preload("res://Areas/Combat/SlowAttack.tres")
 func _ready() -> void:
 	
 	print("AttackMenuReady")
-
-	
 	add_to_group("AttackMenu")
+	
+	_set_latest_signals()
 	
 	Fast_Attack_Button.pressed.connect(_on_attack_pressed.bind(Fast_Attack))
 	Medium_Attack_Button.pressed.connect(_on_attack_pressed.bind(Medium_Attack))
 	Slow_Attack_Button.pressed.connect(_on_attack_pressed.bind(Slow_Attack))
 	
-	#Main_Commands.grab_focus()
+	Main_Commands.grab_focus()
+	
+func _set_latest_signals():
+	
+	await get_tree().current_scene.ready
+	
+	for Character: TurnBasedAgent in get_tree().get_nodes_in_group("TargetNodes"):
+		Character.Player_Turn_Started.connect(_on_player_turn.bind(Character))
+		Character.Attack_Cancelled.connect(_on_player_turn.bind(null))
+	
+func _on_player_turn(character: TurnBasedAgent) -> void:
+	
+	if character: 
+		_set_attack_options(character)
+	show()
+	Main_Commands.get_children()[0].grab_focus()
 	
 func _on_attack_pressed(command: Resource):
 	
 	Attack_Selected.emit(command)
 	print(command)
-	print(randi_range(-5, 5))
 	
+func _set_attack_options(character: TurnBasedAgent):
 	
-	
-	
+	if character.FastAttack:
+		Fast_Attack_Button.pressed.connect(_on_attack_pressed.bind(character.FastAttack))
+	elif character.MediumAttack:
+		Medium_Attack_Button.pressed.connect(_on_attack_pressed.bind(character.MediumAttack))
+	elif character.SlowAttack:
+		Slow_Attack_Button.pressed.connect(_on_attack_pressed.bind(character.SlowAttack))
 	
