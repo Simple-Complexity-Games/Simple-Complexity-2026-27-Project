@@ -1,17 +1,18 @@
 extends Node
 class_name TurnBasedController
 
-var TurnOrder: Array[TurnBasedAgent] = []
-var CurrentCharacter: TurnBasedAgent
+var Possible_Characters: Array[TurnBasedAgent] = []
+var Encounter_Size = 0
+var Turn_Order: Array[TurnBasedAgent] = []
+var Current_Character: TurnBasedAgent
 
 func _ready() -> void:
 	
-	print("ControllerReady")
+	Encounter_Size = randi_range(2, 4)
 	
 	add_to_group("TurnBasedController")
 	
 	_set_after_all_ready()
-	
 	
 func _set_after_all_ready():
 	
@@ -36,20 +37,25 @@ func _set_turn_order():
 	var Enemies = get_tree().get_nodes_in_group("Enemies")
 	
 	for node in Player + Enemies:
-		TurnOrder.append(node)
+		Possible_Characters.append(node)
 	
-	print(TurnOrder)
+	for node in Possible_Characters:
+		if Turn_Order.size() < Encounter_Size:
+			node.Spawned = true
+			Turn_Order.append(node)
+	
+	print("Encounter with ", (Encounter_Size - 1), " enemies has started")
 	
 func _set_next_active_character():
 	
-	if CurrentCharacter:
-		TurnOrder.pop_front()
+	if Current_Character:
+		Turn_Order.pop_front()
 	
-	if TurnOrder.is_empty():
+	if Turn_Order.is_empty():
 		#trigger_attacks()
 		_set_turn_order()
 	
-	CurrentCharacter = TurnOrder[0]
-	CurrentCharacter.set_active(true)
+	Current_Character = Turn_Order[0]
+	Current_Character.set_active(true)
 	
 	

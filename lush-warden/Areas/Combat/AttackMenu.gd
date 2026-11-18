@@ -16,7 +16,6 @@ const Slow_Attack = preload("res://Areas/Combat/SlowAttack.tres")
 
 func _ready() -> void:
 	
-	print("AttackMenuReady")
 	add_to_group("AttackMenu")
 	
 	_set_latest_signals()
@@ -45,7 +44,7 @@ func _on_player_turn(character: TurnBasedAgent) -> void:
 func _on_attack_pressed(command: Resource):
 	
 	Attack_Selected.emit(command)
-	print(command)
+	print(command.name)
 	
 func _set_attack_options(character: TurnBasedAgent):
 	
@@ -55,4 +54,6 @@ func _set_attack_options(character: TurnBasedAgent):
 		Medium_Attack_Button.pressed.connect(_on_attack_pressed.bind(character.MediumAttack))
 	elif character.SlowAttack:
 		Slow_Attack_Button.pressed.connect(_on_attack_pressed.bind(character.SlowAttack))
+	else:
+		hide()
 	

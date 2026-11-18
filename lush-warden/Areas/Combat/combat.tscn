@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dw61n1xav58rw" path="res://Assets/Henson.jpg" id="1_fgds1"]
 [ext_resource type="Script" uid="uid://d4kii17tts1uv" path="res://Areas/Combat/CombatCharacter.gd" id="1_hcbub"]
+[ext_resource type="PackedScene" uid="uid://o5nfjbprwp7x" path="res://Areas/Combat/TurnBasedController.tscn" id="1_jfklj"]
 [ext_resource type="PackedScene" uid="uid://ccm4e5yqw4c57" path="res://Areas/Combat/TargetNode.tscn" id="2_0dlmo"]
 [ext_resource type="PackedScene" uid="uid://bbrysr4unum5v" path="res://Areas/Combat/AttackMenu.tscn" id="2_kcxw6"]
 [ext_resource type="Script" uid="uid://doot1u4v4seih" path="res://Areas/Combat/AttackMenu.gd" id="3_0dlmo"]
@@ -58,6 +59,8 @@ animations = [{
 
 [node name="Combat" type="Node2D" unique_id=2140955922]
 
+[node name="TurnBasedController" parent="." unique_id=1780561975 instance=ExtResource("1_jfklj")]
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=110476534]
 z_index = -10
 offset_right = 1920.0
@@ -86,30 +89,6 @@ Target_Character_Type = 1
 FastAttack = ExtResource("5_mwrcc")
 MediumAttack = ExtResource("6_jfklj")
 SlowAttack = ExtResource("7_kpwxl")
-
-[node name="Enemy3" type="StaticBody2D" parent="." unique_id=2096538657]
-position = Vector2(1537, 384)
-script = ExtResource("1_hcbub")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="Enemy3" unique_id=1524825600]
-visible = false
-position = Vector2(3, -3)
-scale = Vector2(6, 6)
-sprite_frames = SubResource("SpriteFrames_vxg2r")
-animation = &"murderorbshoot"
-frame = 6
-frame_progress = 1.0
-
-[node name="TargetNode" parent="Enemy3" unique_id=439332821 instance=ExtResource("2_0dlmo")]
-FastAttack = ExtResource("5_mwrcc")
-MediumAttack = ExtResource("6_jfklj")
-SlowAttack = ExtResource("7_kpwxl")
-
-[node name="orbofpain" type="Sprite2D" parent="Enemy3/TargetNode" unique_id=507716028]
-visible = false
-position = Vector2(1623, 407)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_77r3b")
 
 [node name="Enemy1" type="StaticBody2D" parent="." unique_id=705676985]
 position = Vector2(981, 222)
@@ -156,6 +135,30 @@ SlowAttack = ExtResource("7_kpwxl")
 [node name="orbofpain" type="Sprite2D" parent="Enemy2/TargetNode" unique_id=294877589]
 visible = false
 position = Vector2(537, 399)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_77r3b")
+
+[node name="Enemy3" type="StaticBody2D" parent="." unique_id=2096538657]
+position = Vector2(1537, 384)
+script = ExtResource("1_hcbub")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Enemy3" unique_id=1524825600]
+visible = false
+position = Vector2(3, -3)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_vxg2r")
+animation = &"murderorbshoot"
+frame = 6
+frame_progress = 1.0
+
+[node name="TargetNode" parent="Enemy3" unique_id=439332821 instance=ExtResource("2_0dlmo")]
+FastAttack = ExtResource("5_mwrcc")
+MediumAttack = ExtResource("6_jfklj")
+SlowAttack = ExtResource("7_kpwxl")
+
+[node name="orbofpain" type="Sprite2D" parent="Enemy3/TargetNode" unique_id=507716028]
+visible = false
+position = Vector2(1623, 407)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_77r3b")
 

@@ -3,12 +3,13 @@ class_name TurnBasedAgent
 
 @export var Target_Character_Type: Character_Type
 @export var Enemy_Class: Resource
-@export var Target_Icon_Offset: Vector2 = Vector2(50, 0)
-@export var On_Turn_Icon_Offset: Vector2 = Vector2(0, -50)
+@export var Target_Icon_Offset: Vector2 = Vector2(175, 0)
+@export var On_Turn_Icon_Offset: Vector2 = Vector2(0, -175)
 
 @onready var Target_Icon: TextureRect = %TargetIcon
 @onready var On_Turn_Icon: TextureRect = %OnTurnIcon
 @onready var Attack_Resource = preload("res://Areas/Combat/AttackResource.gd")
+@onready var Spawned = false
 
 @export var FastAttack: Resource
 @export var MediumAttack: Resource
@@ -37,8 +38,6 @@ func _selection_finished():
 
 func _ready() -> void:
 	
-	print("TargetNodeReady")
-	
 	_set_target_icon()
 	_set_on_turn_icon()
 	_set_late_signals()
@@ -57,7 +56,7 @@ func _input(event: InputEvent) -> void:
 	elif Target in Player_Target:
 		_select_between_targets(event, Player_Target)
 		
-	if event.is_action_pressed("Select"):
+	if event.is_action_pressed("Select") and Target.Spawned == true:
 		_confirm_target()
 	if event.is_action_pressed("Cancel"):
 		_cancel_targeting()
@@ -65,6 +64,7 @@ func _input(event: InputEvent) -> void:
 func _confirm_target():
 	
 	Target_Confirmed.emit(Target, Selected_Attack)
+	print(get_parent().name, " makes a ", Selected_Attack.name, " aimed at ", Target.name)
 	_deselect_all_targets()
 	set_active(false)
 	Target = null
@@ -76,7 +76,7 @@ func set_active(boolean: bool) -> void:
 	if Is_Active:
 		On_Turn_Icon.show()
 	else:
-		On_Turn_Icon.show()
+		On_Turn_Icon.hide()
 
 func _set_on_turn_icon():
 	
@@ -111,7 +111,6 @@ func _select_between_targets(event: InputEvent, targets: Array):
 	_deselect_all_targets()
 	Target = targets[Current_Target_Index]
 	Target.set_target()
-	print(Target)
 
 func _deselect_all_targets():
 	
@@ -121,8 +120,6 @@ func _deselect_all_targets():
 		target.Target_Icon.hide()
 
 func _set_group():
-	
-	print("SettingGroups")
 	
 	add_to_group("TurnBasedAgents")
 	
