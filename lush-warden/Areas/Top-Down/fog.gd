@@ -73,7 +73,7 @@ func _process(_delta: float) -> void:
 	else:
 		clear_timer.wait_time = clear_delay
 	
-	if Input.is_action_just_pressed("Glide"):
+	if Input.is_action_just_pressed("Speed"):
 		if Caution == true:
 			Caution = false
 		else:

@@ -466,6 +466,7 @@ offset_right = 0.639893
 offset_bottom = 7.95996
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 8
 metadata/_edit_group_ = true
 
@@ -713,9 +714,9 @@ anchor_bottom = 1.3330001
 offset_top = -3.0517578e-05
 offset_right = 0.00012207031
 offset_bottom = 0.1199646
-focus_neighbor_top = NodePath("../GridContainer/Jump_Bind_Button")
+focus_neighbor_top = NodePath("../GridContainer/Menu_Bind_Button")
 focus_next = NodePath("../GridContainer/Left_Bind_Button")
-focus_previous = NodePath("../GridContainer/Jump_Bind_Button")
+focus_previous = NodePath("../GridContainer/Menu_Bind_Button/Menu_Unbind_Button")
 theme_override_styles/hover = ExtResource("7_jewm6")
 theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
 theme_override_styles/hover_pressed = ExtResource("7_jewm6")
@@ -1164,7 +1165,7 @@ offset_bottom = -8.0
 focus_neighbor_left = NodePath("..")
 focus_neighbor_top = NodePath("../../Up_Bind_Button/Up_Unbind_Button")
 focus_neighbor_right = NodePath("../../Interact_Bind_Button")
-focus_neighbor_bottom = NodePath("../../../Controls_Done_Button")
+focus_neighbor_bottom = NodePath("../../Return_Bind_Button/Return_Unbind_Button")
 focus_next = NodePath("../../Interact_Bind_Button")
 focus_previous = NodePath("..")
 theme_override_font_sizes/font_size = 20
@@ -1182,7 +1183,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
 focus_neighbor_top = NodePath("../Down_Bind_Button")
 focus_neighbor_right = NodePath("Interact_Unbind_Button")
-focus_neighbor_bottom = NodePath("../../Controls_Done_Button")
+focus_neighbor_bottom = NodePath("../Artifacts_Bind_Button")
 focus_next = NodePath("Interact_Unbind_Button")
 focus_previous = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
 theme_override_styles/hover = ExtResource("7_jewm6")
@@ -1250,8 +1251,8 @@ offset_right = -8.0
 offset_bottom = -8.0
 focus_neighbor_left = NodePath("..")
 focus_neighbor_top = NodePath("../../Down_Bind_Button/Down_Unbind_Button")
-focus_neighbor_bottom = NodePath("../../../Controls_Done_Button")
-focus_next = NodePath("../../../Controls_Done_Button")
+focus_neighbor_bottom = NodePath("../../Artifacts_Bind_Button/Artifacts_Unbind_Button")
+focus_next = NodePath("../../Return_Bind_Button")
 focus_previous = NodePath("..")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = ExtResource("7_jewm6")
@@ -1265,12 +1266,11 @@ Oldest"
 self_modulate = Color(0.498039, 0.839216, 0.545098, 1)
 custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
-focus_neighbor_left = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
-focus_neighbor_top = NodePath("../Down_Bind_Button")
+focus_neighbor_top = NodePath("../Jump_Bind_Button")
 focus_neighbor_right = NodePath("Return_Unbind_Button")
-focus_neighbor_bottom = NodePath("../../Controls_Done_Button")
+focus_neighbor_bottom = NodePath("../Menu_Bind_Button")
 focus_next = NodePath("Return_Unbind_Button")
-focus_previous = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
+focus_previous = NodePath("../Interact_Bind_Button/Interact_Unbind_Button")
 theme_override_styles/hover = ExtResource("7_jewm6")
 theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
 theme_override_styles/hover_pressed = ExtResource("7_jewm6")
@@ -1335,9 +1335,10 @@ offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -8.0
 focus_neighbor_left = NodePath("..")
-focus_neighbor_top = NodePath("../../Down_Bind_Button/Down_Unbind_Button")
-focus_neighbor_bottom = NodePath("../../../Controls_Done_Button")
-focus_next = NodePath("../../../Controls_Done_Button")
+focus_neighbor_top = NodePath("../../Jump_Bind_Button/Jump_Unbind_Button")
+focus_neighbor_right = NodePath("../../Artifacts_Bind_Button")
+focus_neighbor_bottom = NodePath("../../Menu_Bind_Button/Menu_Unbind_Button")
+focus_next = NodePath("../../Artifacts_Bind_Button")
 focus_previous = NodePath("..")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = ExtResource("7_jewm6")
@@ -1351,12 +1352,12 @@ Oldest"
 self_modulate = Color(0.498039, 0.839216, 0.545098, 1)
 custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
-focus_neighbor_left = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
-focus_neighbor_top = NodePath("../Down_Bind_Button")
+focus_neighbor_left = NodePath("../Return_Bind_Button/Return_Unbind_Button")
+focus_neighbor_top = NodePath("../Interact_Bind_Button")
 focus_neighbor_right = NodePath("Artifacts_Unbind_Button")
 focus_neighbor_bottom = NodePath("../../Controls_Done_Button")
 focus_next = NodePath("Artifacts_Unbind_Button")
-focus_previous = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
+focus_previous = NodePath("../Return_Bind_Button/Return_Unbind_Button")
 theme_override_styles/hover = ExtResource("7_jewm6")
 theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
 theme_override_styles/hover_pressed = ExtResource("7_jewm6")
@@ -1421,9 +1422,9 @@ offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -8.0
 focus_neighbor_left = NodePath("..")
-focus_neighbor_top = NodePath("../../Down_Bind_Button/Down_Unbind_Button")
+focus_neighbor_top = NodePath("../../Interact_Bind_Button/Interact_Unbind_Button")
 focus_neighbor_bottom = NodePath("../../../Controls_Done_Button")
-focus_next = NodePath("../../../Controls_Done_Button")
+focus_next = NodePath("../../Menu_Bind_Button")
 focus_previous = NodePath("..")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = ExtResource("7_jewm6")
@@ -1438,11 +1439,11 @@ self_modulate = Color(0.498039, 0.839216, 0.545098, 1)
 custom_minimum_size = Vector2(128, 72)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
-focus_neighbor_top = NodePath("../Down_Bind_Button")
+focus_neighbor_top = NodePath("../Return_Bind_Button")
 focus_neighbor_right = NodePath("Menu_Unbind_Button")
 focus_neighbor_bottom = NodePath("../../Controls_Done_Button")
 focus_next = NodePath("Menu_Unbind_Button")
-focus_previous = NodePath("../Jump_Bind_Button/Jump_Unbind_Button")
+focus_previous = NodePath("../Artifacts_Bind_Button/Artifacts_Unbind_Button")
 theme_override_styles/hover = ExtResource("7_jewm6")
 theme_override_styles/hover_mirrored = ExtResource("7_jewm6")
 theme_override_styles/hover_pressed = ExtResource("7_jewm6")
@@ -1507,7 +1508,7 @@ offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -8.0
 focus_neighbor_left = NodePath("..")
-focus_neighbor_top = NodePath("../../Down_Bind_Button/Down_Unbind_Button")
+focus_neighbor_top = NodePath("../../Return_Bind_Button/Return_Unbind_Button")
 focus_neighbor_bottom = NodePath("../../../Controls_Done_Button")
 focus_next = NodePath("../../../Controls_Done_Button")
 focus_previous = NodePath("..")
@@ -1611,10 +1612,10 @@ zoom = Vector2(1.05, 1.05)
 [connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Return_Bind_Button" to="." method="_on_return_bind_button_mouse_entered"]
 [connection signal="button_down" from="Controls_Menu_Container/GridContainer/Return_Bind_Button/Return_Unbind_Button" to="." method="_on_return_unbind_button_button_down"]
 [connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Return_Bind_Button/Return_Unbind_Button" to="." method="_on_return_unbind_button_mouse_entered"]
-[connection signal="button_down" from="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button" to="." method="_on_glide_bind_button_button_down"]
-[connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button" to="." method="_on_glide_bind_button_mouse_entered"]
-[connection signal="button_down" from="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button/Artifacts_Unbind_Button" to="." method="_on_glide_unbind_button_button_down"]
-[connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button/Artifacts_Unbind_Button" to="." method="_on_glide_unbind_button_mouse_entered"]
+[connection signal="button_down" from="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button" to="." method="_on_artifacts_bind_button_button_down"]
+[connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button" to="." method="_on_artifacts_bind_button_mouse_entered"]
+[connection signal="button_down" from="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button/Artifacts_Unbind_Button" to="." method="_on_artifacts_unbind_button_button_down"]
+[connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Artifacts_Bind_Button/Artifacts_Unbind_Button" to="." method="_on_artifacts_unbind_button_mouse_entered"]
 [connection signal="button_down" from="Controls_Menu_Container/GridContainer/Menu_Bind_Button" to="." method="_on_menu_bind_button_button_down"]
 [connection signal="mouse_entered" from="Controls_Menu_Container/GridContainer/Menu_Bind_Button" to="." method="_on_menu_bind_button_mouse_entered"]
 [connection signal="button_down" from="Controls_Menu_Container/GridContainer/Menu_Bind_Button/Menu_Unbind_Button" to="." method="_on_menu_unbind_button_button_down"]

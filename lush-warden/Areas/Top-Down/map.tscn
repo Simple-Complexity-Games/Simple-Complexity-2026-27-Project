@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cfl7dw4qcxeu4"]
 
 [ext_resource type="Texture2D" uid="uid://befoed6lhnffw" path="res://Areas/Top-Down/example_map.png" id="1_iejky"]
-[ext_resource type="Script" uid="uid://bpawl75u3pnbt" path="res://Areas/Top-Down/top_down_player.gd" id="2_mibml"]
+[ext_resource type="Script" uid="uid://8guxq888lnjq" path="res://Areas/Top-Down/top_down_player.gd" id="2_mibml"]
 [ext_resource type="Texture2D" uid="uid://ds77awv58pa3e" path="res://Areas/Top-Down/player_sprite.svg" id="2_xgnib"]
 [ext_resource type="Script" uid="uid://k8w28a6du5q5" path="res://Areas/Top-Down/fog.gd" id="4_cqrm3"]
 [ext_resource type="PackedScene" uid="uid://ci4j4sbbwqw8p" path="res://Entities/vignette_travel_node.tscn" id="5_vtusi"]
@@ -141,6 +141,7 @@ shape = SubResource("RectangleShape2D_yqjme")
 
 [node name="Artifact_Menu" type="Control" parent="." unique_id=898104167]
 unique_name_in_owner = true
+visible = false
 z_index = 3
 layout_mode = 3
 anchors_preset = 0
@@ -174,3 +175,9 @@ theme_override_font_sizes/normal_font_size = 150
 text = "Artifacts"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Encounter_Timer" type="Timer" parent="." unique_id=1589134259]
+unique_name_in_owner = true
+autostart = true
+
+[connection signal="timeout" from="Encounter_Timer" to="Top_Down_Player" method="_on_encounter_timer_timeout"]

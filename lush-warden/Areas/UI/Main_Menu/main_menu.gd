@@ -733,7 +733,7 @@ func _on_interact_unbind_button_button_down():
 # Return action rebind button
 func _on_return_bind_button_mouse_entered():
 	Hover_SFX_Player.playing = true
-	Interact_Bind_Button.grab_focus()
+	Return_Bind_Button.grab_focus()
 func _on_return_bind_button_button_down():
 	Hover_SFX_Player.playing = true
 	start_rebinding = true
@@ -741,7 +741,7 @@ func _on_return_bind_button_button_down():
 # Return action unbind button
 func _on_return_unbind_button_mouse_entered():
 	Hover_SFX_Player.playing = true
-	Interact_Unbind_Button.grab_focus()
+	Return_Unbind_Button.grab_focus()
 func _on_return_unbind_button_button_down():
 	Hover_SFX_Player.pitch_scale = 0.6
 	Hover_SFX_Player.playing = true
@@ -756,36 +756,10 @@ func _on_return_unbind_button_button_down():
 	if InputMap.action_get_events("Return").size() > 0:
 		var event_to_delete = InputMap.action_get_events("Return")[InputMap.action_get_events("Return").size() - 1]
 		InputMap.action_erase_event("Return", event_to_delete)
-# Menu action rebind button
-func _on_menu_bind_button_mouse_entered():
-	Hover_SFX_Player.playing = true
-	Interact_Bind_Button.grab_focus()
-func _on_menu_bind_button_button_down():
-	Hover_SFX_Player.playing = true
-	start_rebinding = true
-	action_to_be_rebound = "Menu"
-# Menu action unbind button
-func _on_menu_unbind_button_mouse_entered():
-	Hover_SFX_Player.playing = true
-	Interact_Unbind_Button.grab_focus()
-func _on_menu_unbind_button_button_down():
-	Hover_SFX_Player.pitch_scale = 0.6
-	Hover_SFX_Player.playing = true
-	Hover_SFX_Player.pitch_scale = 1
-	if Interact_Bind_2.texture != null:
-		Interact_Bind_2.texture = null
-		Update_Config("Controls", "Menu", "", 1)
-	else:
-		Interact_Bind_1.texture = null
-		Update_Config("Controls", "Menu", "", 0)
-	# Delete end event in events list
-	if InputMap.action_get_events("Menu").size() > 0:
-		var event_to_delete = InputMap.action_get_events("Menu")[InputMap.action_get_events("Menu").size() - 1]
-		InputMap.action_erase_event("Menu", event_to_delete)
 # Artifacts action rebind button
 func _on_artifacts_bind_button_mouse_entered():
 	Hover_SFX_Player.playing = true
-	Interact_Bind_Button.grab_focus()
+	Artifacts_Bind_Button.grab_focus()
 func _on_artifacts_bind_button_button_down():
 	Hover_SFX_Player.playing = true
 	start_rebinding = true
@@ -793,7 +767,7 @@ func _on_artifacts_bind_button_button_down():
 # Artifacts action unbind button
 func _on_artifacts_unbind_button_mouse_entered():
 	Hover_SFX_Player.playing = true
-	Interact_Unbind_Button.grab_focus()
+	Artifacts_Unbind_Button.grab_focus()
 func _on_artifacts_unbind_button_button_down():
 	Hover_SFX_Player.pitch_scale = 0.6
 	Hover_SFX_Player.playing = true
@@ -808,6 +782,32 @@ func _on_artifacts_unbind_button_button_down():
 	if InputMap.action_get_events("Artifacts").size() > 0:
 		var event_to_delete = InputMap.action_get_events("Artifacts")[InputMap.action_get_events("Artifacts").size() - 1]
 		InputMap.action_erase_event("Artifacts", event_to_delete)
+# Menu action rebind button
+func _on_menu_bind_button_mouse_entered():
+	Hover_SFX_Player.playing = true
+	Menu_Bind_Button.grab_focus()
+func _on_menu_bind_button_button_down():
+	Hover_SFX_Player.playing = true
+	start_rebinding = true
+	action_to_be_rebound = "Menu"
+# Menu action unbind button
+func _on_menu_unbind_button_mouse_entered():
+	Hover_SFX_Player.playing = true
+	Menu_Unbind_Button.grab_focus()
+func _on_menu_unbind_button_button_down():
+	Hover_SFX_Player.pitch_scale = 0.6
+	Hover_SFX_Player.playing = true
+	Hover_SFX_Player.pitch_scale = 1
+	if Interact_Bind_2.texture != null:
+		Interact_Bind_2.texture = null
+		Update_Config("Controls", "Menu", "", 1)
+	else:
+		Interact_Bind_1.texture = null
+		Update_Config("Controls", "Menu", "", 0)
+	# Delete end event in events list
+	if InputMap.action_get_events("Menu").size() > 0:
+		var event_to_delete = InputMap.action_get_events("Menu")[InputMap.action_get_events("Menu").size() - 1]
+		InputMap.action_erase_event("Menu", event_to_delete)
 # Done button 
 func _on_controls_done_button_mouse_entered():
 	Hover_SFX_Player.playing = true
@@ -1157,8 +1157,8 @@ func Create_Config(config_file):
 	config_file.set_value("Controls", "Jump", ["k32", "k67"])
 	config_file.set_value("Controls", "Interact", ["k69", "k88"])
 	config_file.set_value("Controls", "Return", ["k4194325", "k90"])
-	config_file.set_value("Controls", "Menu", ["k27", "k77"])
 	config_file.set_value("Controls", "Artifacts", ["k81", "k83"])
+	config_file.set_value("Controls", "Menu", ["k27", "k77"])
 	
 	
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
@@ -1272,19 +1272,12 @@ func Apply_Config(config_file, utility = false):
 		# because otherwise upon loading an existing config file the player's eardrums will be blasted out by 
 		# horribly deep-fried and amplified audio (ask me how I know)
 		AudioServer.set_bus_volume_linear(0, 0.8)
-		print(AudioServer.get_bus_volume_linear(0))
-		print(AudioServer.get_bus_volume_linear(1))
-		print(AudioServer.get_bus_volume_linear(2))
-		print(config_file.get_value("Audio", "Master_Volume") / 80.0)
 		AudioServer.set_bus_volume_linear(0, config_file.get_value("Audio", "Master_Volume") / 80.0)
 		Master_Volume_Slider.value = config_file.get_value("Audio", "Master_Volume")
 		AudioServer.set_bus_volume_linear(1, config_file.get_value("Audio", "Music_Volume") / 80.0)
 		Music_Volume_Slider.value = config_file.get_value("Audio", "Music_Volume")
 		AudioServer.set_bus_volume_linear(2, config_file.get_value("Audio", "SFX_Volume") / 80.0)
 		SFX_Volume_Slider.value = config_file.get_value("Audio", "SFX_Volume")
-		print(AudioServer.get_bus_volume_linear(0))
-		print(AudioServer.get_bus_volume_linear(1))
-		print(AudioServer.get_bus_volume_linear(2))
 	#endregion
 	
 	#region <> Video settings
