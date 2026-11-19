@@ -23,8 +23,6 @@ func _ready() -> void:
 func _on_character_action(target: TurnBasedAgent, attack: Resource):
 	
 	_animation_example(target)
-	
-	
 #everything below this to be deleted once proper animations are implimented
 func _input(event: InputEvent):
 	

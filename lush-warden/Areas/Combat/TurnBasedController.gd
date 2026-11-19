@@ -57,5 +57,3 @@ func _set_next_active_character():
 	
 	Current_Character = Turn_Order[0]
 	Current_Character.set_active(true)
-	
-	
