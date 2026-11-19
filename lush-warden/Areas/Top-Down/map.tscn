@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ci4j4sbbwqw8p" path="res://Entities/vignette_travel_node.tscn" id="5_vtusi"]
 [ext_resource type="Texture2D" uid="uid://ccnigadscw0mu" path="res://Areas/Top-Down/Lucious warden.jpg" id="6_3rtqp"]
 [ext_resource type="Script" uid="uid://oho778l1m58c" path="res://Areas/Top-Down/artifact_menu.gd" id="7_i0kcm"]
+[ext_resource type="PackedScene" uid="uid://dm8ogkjko0ibe" path="res://Areas/Top-Down/esc_menu.tscn" id="8_xmgo7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oovfn"]
 radius = 36.0
@@ -179,5 +180,15 @@ vertical_alignment = 1
 [node name="Encounter_Timer" type="Timer" parent="." unique_id=1589134259]
 unique_name_in_owner = true
 autostart = true
+
+[node name="Esc_Menu" parent="." unique_id=1543293853 instance=ExtResource("8_xmgo7")]
+visible = false
+z_index = 2
+offset_left = 2880.0
+offset_top = 1624.0
+offset_right = 4800.0
+offset_bottom = 2704.0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(4, 4)
 
 [connection signal="timeout" from="Encounter_Timer" to="Top_Down_Player" method="_on_encounter_timer_timeout"]
