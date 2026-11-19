@@ -13,7 +13,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if area_occupied and Input.is_action_just_pressed("Jump"):
+	if area_occupied and Input.is_action_just_pressed("Interact"):
 		if not vignette_file_name:
 			print("ERROR: Vignette file name missing, cannot load scene")
 		else:

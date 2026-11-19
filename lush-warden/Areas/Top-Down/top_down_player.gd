@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var fog = %Fog
 @onready var artifact_menu = %Artifact_Menu
+@onready var encounter_timer = %Encounter_Timer
 
 const FOG_CLEARING_ACCELERATION = 220
 const RETRACING_ACCELERATION = 950
@@ -14,9 +15,13 @@ var acceleration = FOG_CLEARING_ACCELERATION
 var speed = FOG_CLEARING_SPEED
 var fog_texture
 
+var encounter_roll_period = 1
+
 
 func _ready():
 	fog_texture = fog.fog_texture.get_image()
+	encounter_timer.wait_time = encounter_roll_period
+	encounter_timer.start()
 
 func _physics_process(delta: float) -> void:
 	fog_texture = fog.fog_texture.get_image()
@@ -35,16 +40,28 @@ func _physics_process(delta: float) -> void:
 		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
 		Input.get_action_strength("Down") - Input.get_action_strength("Up")).normalized()
 	if direction:
+		encounter_timer.paused = false
 		velocity.x = move_toward(velocity.x, direction.x * speed, acceleration * delta)
 		velocity.y = move_toward(velocity.y, direction.y * speed, acceleration * delta)
 	else:
+		encounter_timer.paused = true
 		velocity.x = move_toward(velocity.x, 0, acceleration * delta)
 		velocity.y = move_toward(velocity.y, 0, acceleration * delta)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Open_Artifact_Menu"):
+	if Input.is_action_just_pressed("Artifacts"):
 		if artifact_menu.visible == false:
 			artifact_menu.Open()
 		else:
 			artifact_menu.Close()
 	move_and_slide()
+
+func _on_encounter_timer_timeout():
+	var chance
+	if speed == RETRACING_SPEED:
+		chance = 22
+	else:
+		chance = 15
+	
+	if randi_range(0, chance) == 0:
+		get_tree().change_scene_to_file("res://Areas/Combat/combat.tscn")

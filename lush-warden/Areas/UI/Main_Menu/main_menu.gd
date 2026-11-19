@@ -733,7 +733,7 @@ func _on_interact_unbind_button_button_down():
 # Return action rebind button
 func _on_return_bind_button_mouse_entered():
 	Hover_SFX_Player.playing = true
-	Interact_Bind_Button.grab_focus()
+	Return_Bind_Button.grab_focus()
 func _on_return_bind_button_button_down():
 	Hover_SFX_Player.playing = true
 	start_rebinding = true
@@ -741,7 +741,7 @@ func _on_return_bind_button_button_down():
 # Return action unbind button
 func _on_return_unbind_button_mouse_entered():
 	Hover_SFX_Player.playing = true
-	Interact_Unbind_Button.grab_focus()
+	Return_Unbind_Button.grab_focus()
 func _on_return_unbind_button_button_down():
 	Hover_SFX_Player.pitch_scale = 0.6
 	Hover_SFX_Player.playing = true
@@ -756,36 +756,10 @@ func _on_return_unbind_button_button_down():
 	if InputMap.action_get_events("Return").size() > 0:
 		var event_to_delete = InputMap.action_get_events("Return")[InputMap.action_get_events("Return").size() - 1]
 		InputMap.action_erase_event("Return", event_to_delete)
-# Menu action rebind button
-func _on_menu_bind_button_mouse_entered():
-	Hover_SFX_Player.playing = true
-	Interact_Bind_Button.grab_focus()
-func _on_menu_bind_button_button_down():
-	Hover_SFX_Player.playing = true
-	start_rebinding = true
-	action_to_be_rebound = "Menu"
-# Menu action unbind button
-func _on_menu_unbind_button_mouse_entered():
-	Hover_SFX_Player.playing = true
-	Interact_Unbind_Button.grab_focus()
-func _on_menu_unbind_button_button_down():
-	Hover_SFX_Player.pitch_scale = 0.6
-	Hover_SFX_Player.playing = true
-	Hover_SFX_Player.pitch_scale = 1
-	if Interact_Bind_2.texture != null:
-		Interact_Bind_2.texture = null
-		Update_Config("Controls", "Menu", "", 1)
-	else:
-		Interact_Bind_1.texture = null
-		Update_Config("Controls", "Menu", "", 0)
-	# Delete end event in events list
-	if InputMap.action_get_events("Menu").size() > 0:
-		var event_to_delete = InputMap.action_get_events("Menu")[InputMap.action_get_events("Menu").size() - 1]
-		InputMap.action_erase_event("Menu", event_to_delete)
 # Artifacts action rebind button
 func _on_artifacts_bind_button_mouse_entered():
 	Hover_SFX_Player.playing = true
-	Interact_Bind_Button.grab_focus()
+	Artifacts_Bind_Button.grab_focus()
 func _on_artifacts_bind_button_button_down():
 	Hover_SFX_Player.playing = true
 	start_rebinding = true
@@ -793,7 +767,7 @@ func _on_artifacts_bind_button_button_down():
 # Artifacts action unbind button
 func _on_artifacts_unbind_button_mouse_entered():
 	Hover_SFX_Player.playing = true
-	Interact_Unbind_Button.grab_focus()
+	Artifacts_Unbind_Button.grab_focus()
 func _on_artifacts_unbind_button_button_down():
 	Hover_SFX_Player.pitch_scale = 0.6
 	Hover_SFX_Player.playing = true
@@ -808,6 +782,32 @@ func _on_artifacts_unbind_button_button_down():
 	if InputMap.action_get_events("Artifacts").size() > 0:
 		var event_to_delete = InputMap.action_get_events("Artifacts")[InputMap.action_get_events("Artifacts").size() - 1]
 		InputMap.action_erase_event("Artifacts", event_to_delete)
+# Menu action rebind button
+func _on_menu_bind_button_mouse_entered():
+	Hover_SFX_Player.playing = true
+	Menu_Bind_Button.grab_focus()
+func _on_menu_bind_button_button_down():
+	Hover_SFX_Player.playing = true
+	start_rebinding = true
+	action_to_be_rebound = "Menu"
+# Menu action unbind button
+func _on_menu_unbind_button_mouse_entered():
+	Hover_SFX_Player.playing = true
+	Menu_Unbind_Button.grab_focus()
+func _on_menu_unbind_button_button_down():
+	Hover_SFX_Player.pitch_scale = 0.6
+	Hover_SFX_Player.playing = true
+	Hover_SFX_Player.pitch_scale = 1
+	if Interact_Bind_2.texture != null:
+		Interact_Bind_2.texture = null
+		Update_Config("Controls", "Menu", "", 1)
+	else:
+		Interact_Bind_1.texture = null
+		Update_Config("Controls", "Menu", "", 0)
+	# Delete end event in events list
+	if InputMap.action_get_events("Menu").size() > 0:
+		var event_to_delete = InputMap.action_get_events("Menu")[InputMap.action_get_events("Menu").size() - 1]
+		InputMap.action_erase_event("Menu", event_to_delete)
 # Done button 
 func _on_controls_done_button_mouse_entered():
 	Hover_SFX_Player.playing = true
@@ -1155,8 +1155,8 @@ func Create_Config(config_file):
 	config_file.set_value("Controls", "Jump", ["k32", "k67"])
 	config_file.set_value("Controls", "Interact", ["k69", "k88"])
 	config_file.set_value("Controls", "Return", ["k4194325", "k90"])
-	config_file.set_value("Controls", "Menu", ["k27", "k77"])
 	config_file.set_value("Controls", "Artifacts", ["k81", "k83"])
+	config_file.set_value("Controls", "Menu", ["k27", "k77"])
 	
 	
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
@@ -1188,119 +1188,112 @@ func Save_Config(config_file):
 # being used to get the keybinds stored in the config file into the InputMap in a directly launched scene
 func Apply_Config(config_file, utility = false):
 	#region <> Controls settings
-	#for section_key in config_file.get_section_keys("Controls"):
-		#var bind_list = config_file.get_value("Controls", section_key)
-		## Erase all input events to make room for loading those from the config file
-		#InputMap.action_erase_events(section_key)
-		#
-		#if bind_list[0] != "":
-			## Load the button icons for the bind codes in the config file to the primary rebind slot, adapting 
-			## to different input methods depending on the first letter of the bind code
-			#var primary_rebind_slot_icon
-			#if bind_list[0][0] == "m":
-				## If the mouse index is in the icon dictionary, load that icon. If not, load the blank key icon
-				## Use string slicing to get the numbers of the bind code, then convert it to an int for the dict
-				#var icon_file_name = Mouse_Index_To_Button_Icon_File_Name_Dict.get(int(bind_list[0].substr(1)))
-				#if icon_file_name:
-					#primary_rebind_slot_icon = load(button_icon_folder_path+icon_file_name)
-				#else:
-					#primary_rebind_slot_icon = load(blank_button_icon_folder_path+blank_mouse_texture_name)
-				## Add keybind event using button index derived from numbers of bind code, found with substr() and cast to an int
-				#var primary_keybind_event = InputEventMouseButton.new()
-				#primary_keybind_event.set_button_index(int(bind_list[0].substr(1)))
-				#primary_keybind_event.pressed = true
-				#InputMap.action_add_event(section_key, primary_keybind_event)
-			#elif bind_list[0][0] == "k":
-				## If the keycode is in the icon dictionary, load that icon. If not, load the blank mouse icon
-				## Use string slicing to get the numbers of the bind code, then convert it to an int for the dict
-				#var icon_file_name = Keycode_To_Button_Icon_File_Name_Dict.get(int(bind_list[0].substr(1)))
-				#if icon_file_name:
-					#primary_rebind_slot_icon = load(button_icon_folder_path+icon_file_name)
-				#else:
-					#primary_rebind_slot_icon = load(blank_button_icon_folder_path+blank_key_texture_name)
-				## Add keybind event using keycode derived from numbers of bind code, found with substr() and cast to an int
-				#var primary_keybind_event = InputEventKey.new()
-				#primary_keybind_event.set_keycode(int(bind_list[0].substr(1)))
-				#primary_keybind_event.pressed = true
-				#InputMap.action_add_event(section_key, primary_keybind_event)
-			#if not utility:
-				#Rebind_Action_To_Primary_Icon_Node_Dict.get(str(section_key)).texture = primary_rebind_slot_icon
-		#else:
-			#Rebind_Action_To_Primary_Icon_Node_Dict.get(str(section_key)).texture = null
-		#
-		#if bind_list[1] != "":
-			## Load the button icons for the bind codes in the config file to the secondary rebind slot, adapting 
-			## to different input methods depending on the first letter of the bind code
-			#var secondary_rebind_slot_icon
-			#if bind_list[1][0] == "m":
-				## If the mouse index is in the icon dictionary, load that icon. If not, load the blank mouse icon
-				## Use string slicing to get the numbers of the bind code, then convert it to an int for the dict
-				#var icon_file_name = Mouse_Index_To_Button_Icon_File_Name_Dict.get(int(bind_list[1].substr(1)))
-				#if icon_file_name:
-					#secondary_rebind_slot_icon = load(button_icon_folder_path+icon_file_name)
-				#else:
-					#secondary_rebind_slot_icon = load(blank_button_icon_folder_path+blank_mouse_texture_name)
-				## Add keybind event using button index derived from numbers of bind code, found with substr() and cast to an int
-				#var secondary_keybind_event = InputEventMouse
-				#secondary_keybind_event.set_button_index(int(bind_list[1].substr(1)))
-				#secondary_keybind_event.pressed = true
-				#InputMap.action_add_event(section_key, secondary_keybind_event)
-			#elif bind_list[1][0] == "k":
-				## If the keycode is in the icon dictionary, load that icon. If not, load the blank key icon
-				## Use string slicing to get the numbers of the bind code, then convert it to an int for the dict
-				#var icon_file_name = Keycode_To_Button_Icon_File_Name_Dict.get(int(bind_list[1].substr(1)))
-				#if icon_file_name:
-					#secondary_rebind_slot_icon = load(button_icon_folder_path+icon_file_name)
-				#else:
-					#secondary_rebind_slot_icon = load(blank_button_icon_folder_path+blank_key_texture_name)
-				## Add keybind event using keycode derived from numbers of bind code, found with substr() and cast to an int
-				#var secondary_keybind_event = InputEventKey.new()
-				#secondary_keybind_event.set_keycode(int(bind_list[1].substr(1)))
-				#secondary_keybind_event.pressed = true
-				#InputMap.action_add_event(section_key, secondary_keybind_event)
-			#if not utility:
-				#Rebind_Action_To_Secondary_Icon_Node_Dict.get(str(section_key)).texture = secondary_rebind_slot_icon
-		#else:
-			#Rebind_Action_To_Secondary_Icon_Node_Dict.get(str(section_key)).texture = null
-	##endregion
-	#
-	##region <> Audio settings
-	#if not utility:
-		## Very important to divide each of these by around 100 to get a range close to 0-1
-		## because otherwise upon loading an existing config file the player's eardrums will be blasted out by 
-		## horribly deep-fried and amplified audio (ask me how I know)
-		#AudioServer.set_bus_volume_linear(0, 0.8)
-		#print(AudioServer.get_bus_volume_linear(0))
-		#print(AudioServer.get_bus_volume_linear(1))
-		#print(AudioServer.get_bus_volume_linear(2))
-		#print(config_file.get_value("Audio", "Master_Volume") / 80.0)
-		#AudioServer.set_bus_volume_linear(0, config_file.get_value("Audio", "Master_Volume") / 80.0)
-		#Master_Volume_Slider.value = config_file.get_value("Audio", "Master_Volume")
-		#AudioServer.set_bus_volume_linear(1, config_file.get_value("Audio", "Music_Volume") / 80.0)
-		#Music_Volume_Slider.value = config_file.get_value("Audio", "Music_Volume")
-		#AudioServer.set_bus_volume_linear(2, config_file.get_value("Audio", "SFX_Volume") / 80.0)
-		#SFX_Volume_Slider.value = config_file.get_value("Audio", "SFX_Volume")
-		#print(AudioServer.get_bus_volume_linear(0))
-		#print(AudioServer.get_bus_volume_linear(1))
-		#print(AudioServer.get_bus_volume_linear(2))
-	##endregion
-	#
-	##region <> Video settings
-	#if not utility:
-		#World_Environment.environment.adjustment_brightness = config_file.get_value("Video", "Brightness")
-		#Video_Brightness_Slider.value = World_Environment.environment.adjustment_brightness
-		#World_Environment.environment.adjustment_contrast = config_file.get_value("Video", "Contrast")
-		#Video_Contrast_Slider.value = World_Environment.environment.adjustment_contrast
-		#World_Environment.environment.adjustment_saturation = config_file.get_value("Video", "Saturation")
-		#Video_Saturation_Slider.value = World_Environment.environment.adjustment_saturation
-		## Screen shake and blur
-		#Screen_Shake_Button.button_pressed = config_file.get_value("Video", "Screen_Shake")
-		#Screen_Blur_Button.button_pressed = config_file.get_value("Video", "Screen_Blur")
-		## Window setting
-		#Window_Mode_Button.selected = Button_To_WindowMode_Index_Dict.find_key(ProjectSettings.get_setting_with_override("display/window/size/mode"))
-		#DisplayServer.window_set_size(Vector2(float(ProjectSettings.get_setting_with_override("display/window/size/window_width_override")), float(ProjectSettings.get_setting_with_override("display/window/size/window_height_override"))))
-	##endregion
-	pass
+	for section_key in config_file.get_section_keys("Controls"):
+		var bind_list = config_file.get_value("Controls", section_key)
+		# Erase all input events to make room for loading those from the config file
+		InputMap.action_erase_events(section_key)
+		
+		if bind_list[0] != "":
+			# Load the button icons for the bind codes in the config file to the primary rebind slot, adapting 
+			# to different input methods depending on the first letter of the bind code
+			var primary_rebind_slot_icon
+			if bind_list[0][0] == "m":
+				# If the mouse index is in the icon dictionary, load that icon. If not, load the blank key icon
+				# Use string slicing to get the numbers of the bind code, then convert it to an int for the dict
+				var icon_file_name = Mouse_Index_To_Button_Icon_File_Name_Dict.get(int(bind_list[0].substr(1)))
+				if icon_file_name:
+					primary_rebind_slot_icon = load(button_icon_folder_path+icon_file_name)
+				else:
+					primary_rebind_slot_icon = load(blank_button_icon_folder_path+blank_mouse_texture_name)
+				# Add keybind event using button index derived from numbers of bind code, found with substr() and cast to an int
+				var primary_keybind_event = InputEventMouseButton.new()
+				primary_keybind_event.set_button_index(int(bind_list[0].substr(1)))
+				primary_keybind_event.pressed = true
+				InputMap.action_add_event(section_key, primary_keybind_event)
+			elif bind_list[0][0] == "k":
+				# If the keycode is in the icon dictionary, load that icon. If not, load the blank mouse icon
+				# Use string slicing to get the numbers of the bind code, then convert it to an int for the dict
+				var icon_file_name = Keycode_To_Button_Icon_File_Name_Dict.get(int(bind_list[0].substr(1)))
+				if icon_file_name:
+					primary_rebind_slot_icon = load(button_icon_folder_path+icon_file_name)
+				else:
+					primary_rebind_slot_icon = load(blank_button_icon_folder_path+blank_key_texture_name)
+				# Add keybind event using keycode derived from numbers of bind code, found with substr() and cast to an int
+				var primary_keybind_event = InputEventKey.new()
+				primary_keybind_event.set_keycode(int(bind_list[0].substr(1)))
+				primary_keybind_event.pressed = true
+				InputMap.action_add_event(section_key, primary_keybind_event)
+			if not utility:
+				Rebind_Action_To_Primary_Icon_Node_Dict.get(str(section_key)).texture = primary_rebind_slot_icon
+		else:
+			Rebind_Action_To_Primary_Icon_Node_Dict.get(str(section_key)).texture = null
+		
+		if bind_list[1] != "":
+			# Load the button icons for the bind codes in the config file to the secondary rebind slot, adapting 
+			# to different input methods depending on the first letter of the bind code
+			var secondary_rebind_slot_icon
+			if bind_list[1][0] == "m":
+				# If the mouse index is in the icon dictionary, load that icon. If not, load the blank mouse icon
+				# Use string slicing to get the numbers of the bind code, then convert it to an int for the dict
+				var icon_file_name = Mouse_Index_To_Button_Icon_File_Name_Dict.get(int(bind_list[1].substr(1)))
+				if icon_file_name:
+					secondary_rebind_slot_icon = load(button_icon_folder_path+icon_file_name)
+				else:
+					secondary_rebind_slot_icon = load(blank_button_icon_folder_path+blank_mouse_texture_name)
+				# Add keybind event using button index derived from numbers of bind code, found with substr() and cast to an int
+				var secondary_keybind_event = InputEventMouse
+				secondary_keybind_event.set_button_index(int(bind_list[1].substr(1)))
+				secondary_keybind_event.pressed = true
+				InputMap.action_add_event(section_key, secondary_keybind_event)
+			elif bind_list[1][0] == "k":
+				# If the keycode is in the icon dictionary, load that icon. If not, load the blank key icon
+				# Use string slicing to get the numbers of the bind code, then convert it to an int for the dict
+				var icon_file_name = Keycode_To_Button_Icon_File_Name_Dict.get(int(bind_list[1].substr(1)))
+				if icon_file_name:
+					secondary_rebind_slot_icon = load(button_icon_folder_path+icon_file_name)
+				else:
+					secondary_rebind_slot_icon = load(blank_button_icon_folder_path+blank_key_texture_name)
+				# Add keybind event using keycode derived from numbers of bind code, found with substr() and cast to an int
+				var secondary_keybind_event = InputEventKey.new()
+				secondary_keybind_event.set_keycode(int(bind_list[1].substr(1)))
+				secondary_keybind_event.pressed = true
+				InputMap.action_add_event(section_key, secondary_keybind_event)
+			if not utility:
+				Rebind_Action_To_Secondary_Icon_Node_Dict.get(str(section_key)).texture = secondary_rebind_slot_icon
+		else:
+			Rebind_Action_To_Secondary_Icon_Node_Dict.get(str(section_key)).texture = null
+	#endregion
+	
+	#region <> Audio settings
+	if not utility:
+		# Very important to divide each of these by around 100 to get a range close to 0-1
+		# because otherwise upon loading an existing config file the player's eardrums will be blasted out by 
+		# horribly deep-fried and amplified audio (ask me how I know)
+		AudioServer.set_bus_volume_linear(0, 0.8)
+		AudioServer.set_bus_volume_linear(0, config_file.get_value("Audio", "Master_Volume") / 80.0)
+		Master_Volume_Slider.value = config_file.get_value("Audio", "Master_Volume")
+		AudioServer.set_bus_volume_linear(1, config_file.get_value("Audio", "Music_Volume") / 80.0)
+		Music_Volume_Slider.value = config_file.get_value("Audio", "Music_Volume")
+		AudioServer.set_bus_volume_linear(2, config_file.get_value("Audio", "SFX_Volume") / 80.0)
+		SFX_Volume_Slider.value = config_file.get_value("Audio", "SFX_Volume")
+	#endregion
+	
+	#region <> Video settings
+	if not utility:
+		World_Environment.environment.adjustment_brightness = config_file.get_value("Video", "Brightness")
+		Video_Brightness_Slider.value = World_Environment.environment.adjustment_brightness
+		World_Environment.environment.adjustment_contrast = config_file.get_value("Video", "Contrast")
+		Video_Contrast_Slider.value = World_Environment.environment.adjustment_contrast
+		World_Environment.environment.adjustment_saturation = config_file.get_value("Video", "Saturation")
+		Video_Saturation_Slider.value = World_Environment.environment.adjustment_saturation
+		# Screen shake and blur
+		Screen_Shake_Button.button_pressed = config_file.get_value("Video", "Screen_Shake")
+		Screen_Blur_Button.button_pressed = config_file.get_value("Video", "Screen_Blur")
+		# Window setting
+		Window_Mode_Button.selected = Button_To_WindowMode_Index_Dict.find_key(ProjectSettings.get_setting_with_override("display/window/size/mode"))
+		DisplayServer.window_set_size(Vector2(float(ProjectSettings.get_setting_with_override("display/window/size/window_width_override")), float(ProjectSettings.get_setting_with_override("display/window/size/window_height_override"))))
+	#endregion
+
 # Save settings upon quitting application at window manager request
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
