@@ -146,14 +146,14 @@ func _on_attack_pressed(command: Resource) -> void:
 	if not Is_Active:
 		return
 		
-	Selected_Attack = command
-	
-	if command.Target_Type == Attack_Resource.Target_Type.Enemy:
-		Target = get_tree().get_first_node_in_group("Enemies")
-	elif command.Target_Type == Attack_Resource.Target_Type.Player:
-		Target = get_tree().get_node_in_group("Player")
-		
-	Target.set_target()
+	#Selected_Attack = command
+	#
+	#if command.Target_Type == Attack_Resource.Target_Type.Enemy:
+		#Target = get_tree().get_first_node_in_group("Enemies")
+	#elif command.Target_Type == Attack_Resource.Target_Type.Player:
+		#Target = get_tree().get_first_node_in_group("Player")
+		#
+	#Target.set_target()
 
 func set_target():
 	

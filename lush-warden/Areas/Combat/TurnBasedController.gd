@@ -45,6 +45,7 @@ func _set_turn_order():
 			Turn_Order.append(node)
 	
 	print("Encounter with ", (Encounter_Size - 1), " enemies has started")
+	print("First to choose attacks: ", Turn_Order[1].get_parent().name)
 	
 func _set_next_active_character():
 	

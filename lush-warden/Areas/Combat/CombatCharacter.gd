@@ -3,6 +3,9 @@ extends StaticBody2D
 @onready var Target_Node = $TargetNode
 @onready var Base_Initiative = 0
 
+@onready var Current_Health = 20
+@onready var Maximum_Health = 20
+
 func _ready() -> void:
 	
 	Target_Node.Target_Confirmed.connect(_on_character_action) 
@@ -18,7 +21,8 @@ func _ready() -> void:
 		get_node("Sprite").show()
 	
 		print(name, " readied with initiative of ", Base_Initiative)
-
+		var Health_Percentage = Current_Health / Maximum_Health * 100
+		print(name, " has ", Health_Percentage, "% health remaining")
 
 func _on_character_action(target: TurnBasedAgent, attack: Resource):
 	

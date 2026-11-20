@@ -6,6 +6,7 @@ var Items = {"placeholder":"res://Items/Placeholder.tscn"}
 
 var travel_node_suffix = "_Vignette_Travel_Node"
 
+var Progress_Percentage = 0
 
 func Back_To_Map(player_map_parent_node):
 	var map_scene_file = load("res://Areas/Top-Down/map.tscn")
